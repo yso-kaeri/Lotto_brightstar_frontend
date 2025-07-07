@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>獎品管理</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="container mt-5">
+	<h2>新增獎品</h2>
+	<form method="post" action="/uploadPrize" enctype="multipart/form-data" class="mb-5">
+		<div class="mb-3">
+			<label>獎品名稱</label>
+			<input type="text" name="name" class="form-control" required>
+		</div>
+		<div class="mb-3">
+			<label>數量</label>
+			<input type="number" name="quantity" class="form-control" required>
+		</div>
+		<div class="mb-3">
+			<label>圖片</label>
+			<input type="file" name="imagePath" class="form-control" accept="image/*" required>
+		</div>
+		<button type="submit" class="btn btn-primary">上傳</button>
+	</form>
+
+	<h3>獎品列表</h3>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>名稱</th>
+				<th>數量</th>
+				<th>圖片</th>
+				<th>刪除</th>
+			</tr>
+		</thead>
+		<tbody th:if="${prizes != null and !prizes.isEmpty()}">
+			<tr th:each="prize : ${prizes}">
+				<td th:text="${prize.name}"></td>
+				<td th:text="${prize.quantity}"></td>
+				<td><img th:src="${prize.imagePath}" width="100" /></td>
+				<td><button type="button" class="delBut" th:data-name="${prize.name}"
+						th:onclick="deleteCompletely(this.getAttribute('data-name'), this);">削除</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		function deleteCompletely(prizeName, buttonElement) {
+			if (!confirm(`本当に "${prizeName}" を削除しますか？`)) {
+				return;
+			}
+
+			$.ajax({
+				url: '/prize/delete',
+				type: 'DELETE',
+				data: {name: prizeName},
+				success: function (response) {
+					// 移除該筆資料的 <tr>
+					$(buttonElement).closest('tr').remove();
+					alert(`"${prizeName}" を削除しました！`);
+				},
+				error: function (xhr, status, error) {
+					console.error("削除失敗:", error);
+					alert(`"${prizeName}" の削除に失敗しました...`);
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>
