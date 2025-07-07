@@ -129,13 +129,13 @@ function showWinnerNumbers(){
 
 function tosettingPage(){
     const tosettingPage = document.getElementById('setting-button')
-    settingbutton.onclick = function(){
+    tosettingPage.onclick = function(){
         window.location.href = 'settingPage.html';
 
     }
-
-
 }
+
+tosettingPage();
 
 
 
