@@ -179,3 +179,13 @@ tr:last-child td {
 h3{
     color: gold;
 }
+
+/* 会社logo使う、ｃｓｓ */
+.logo {
+     width: 160px;
+     /* 可调整 */
+     z-index: 9999;
+    
+     top: 5px;
+     left: 5px;
+ }

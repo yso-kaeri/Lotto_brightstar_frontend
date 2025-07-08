@@ -1,12 +1,5 @@
  @charset "UTF-8";
 
-
-
-
-
-
-
-
  /* 背景様式のcss */
  body {
      background: linear-gradient(135deg, #a80000 0%, #f7d78b 100%);
@@ -138,12 +131,7 @@
     font-size: 36px;
     color: #90100b;
 
-
-
-
 }
-
-
 
 
  /* 当選番号表示エリア */
@@ -321,3 +309,16 @@
      cursor: pointer;
      color: red;
  }
+
+.winner-button{
+     position: fixed;
+     bottom: 80px;
+     right: 35px;
+     z-index: 99;
+     font-size: 20px;
+     background: #f7cd68;
+     border: none;
+     cursor: pointer;
+     color: red;
+
+}
