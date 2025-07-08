@@ -13,10 +13,10 @@
 	
 	<h1>賞品・賞設定</h1>
 	<img src="" alt="">
-	<form method="post" action="/uploadPrize" enctype="multipart/form-data" class="mb-5">
+	<form id="uploadForm" enctype="multipart/form-data" class="mb-5">
 		<div class="mb-3">
 			<label>賞の名稱</label>
-			<input type="text" name="name" class="form-control" required>
+			<input type="text" name="prizeName" class="form-control" required>
 		</div>
 		<div class="mb-3">
 			<label>賞品の數量</label>
@@ -26,7 +26,7 @@
 			<label>賞品の写真</label>
 			<input type="file" name="imagePath" class="form-control" accept="image/*" required>
 		</div>
-		<button type="submit" class="btn btn-primary">アップロード</button>
+		 <button type="button" id="uploadBtn" class="btn btn-primary">アップロード</button>
 	</form>
 
 	<h3>賞と賞品の詳細</h3>
@@ -43,7 +43,7 @@
 			<tr th:each="prize : ${prizes}">
 				<td th:text="${prize.name}"></td>
 				<td th:text="${prize.quantity}"></td>
-				<td><img th:src="${prize.imagePath}" width="100" /></td>
+				<td><img th:src="@{${prize.imagePath}}" width="100" /></td>
 				<td><button type="button" class="btn btn-primary" th:data-name="${prize.name}"
 						th:onclick="deleteCompletely(this.getAttribute('data-name'), this);">削除</button></td>
 			</tr>
@@ -58,3 +58,5 @@
 </body>
 
 </html>
+
+
