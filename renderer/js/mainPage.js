@@ -127,7 +127,7 @@ function showWinnerNumbers(){
 }
 
 
-function tosettingPage(){
+function toSettingPage(){
     const tosettingPage = document.getElementById('setting-button')
     tosettingPage.onclick = function(){
         window.location.href = 'settingPage.html';
@@ -135,6 +135,16 @@ function tosettingPage(){
     }
 }
 
-tosettingPage();
+toSettingPage();
+
+
+function toWinnerPage(){
+    const toWinnerPage = document.getElementById('winner-button')
+    toWinnerPage.onclick = function(){
+        window.location.href = 'winnersPage.html';
+
+    }
+}
+toWinnerPage();
 
 
