@@ -1,7 +1,7 @@
 // ========== 左侧开奖逻辑 ==========
 const periodNumber = "一等奖";
 let lotteryNumbers = [333, 2, 213, 888, 888];
-document.getElementById('prizeTitle').textContent = periodNumber;
+document.getElementById('awardName').textContent = periodNumber;
 const numberRow = document.getElementById('numberRow');
 
 
@@ -136,7 +136,5 @@ function tosettingPage(){
 }
 
 tosettingPage();
-
-
 
 

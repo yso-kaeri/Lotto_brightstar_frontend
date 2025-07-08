@@ -9,57 +9,61 @@
 </head>
 
 <body>
+  <div class="main-board-wrapper">
 
-  <img class="logo" src="../img/会社Logo.png" alt="会社logo" />
+    <img class="logo" src="../img/会社Logo.png" alt="会社logo" />
 
-  <div class="main-board">
-    <!-- 左开奖数字滚轮区 -->
-    <div class="left-panel">
+    <div class="main-board">
+      <!-- 左开奖数字滚轮区 -->
+      <div class="left-panel">
 
-      <div class="period-info" id="periodInfo">忘年会抽選システム</div>
-      <div class="number-row" id="numberRow"></div>
-      <div class="winner-list" id="winnerList"></div>
+        <div class="period-info" id="periodInfo">忘年会抽選システム</div>
+        <div class="award-name" id="awardName"></div>
+
+        <div class="number-row" id="numberRow"></div>
+        <div class="winner-list" id="winnerList"></div>
 
 
-    </div>
-    <!-- 右奖品图片轮播+开奖按钮区 -->
-    <div class="right-panel">
-      <div class="prize-img-box">
-        <img src="../img/景品.png" alt="奖品图片" class="prize-img-show" id="prizeImg" />
       </div>
-      <div class="prize-img-title" id="prizeTitle"></div>
-      <div class="prize-img-title" id="prizeTitle1">这里显示总共抽几名</div>
-      <div class="prize-img-title" id="prizeTitle2">这里显示剩余几名</div>
-      <div class="prize-btn-row">
-        <button class="prize-arrow-btn" id="arrowLeft" title="上一奖品">
-          <svg viewBox="0 0 24 24" width="22" height="22">
-            <polyline points="15,4 7,12 15,20" fill="none" stroke="#e99809" stroke-width="4" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </button>
-        <form action="#">
+      <!-- 右奖品图片轮播+开奖按钮区 -->
+      <div class="right-panel">
+        <div class="prize-img-box">
+          <img src="../img/景品.png" alt="奖品图片" class="prize-img-show" id="prizeImg" />
+        </div>
+        <div class="prize-img-title" id="prizeTitle"></div>
+        <div class="prize-img-title" id="prizeTitle1">这里显示总共抽几名</div>
+        <div class="prize-img-title" id="prizeTitle2">这里显示剩余几名</div>
+        <div class="prize-btn-row">
+          <button class="prize-arrow-btn" id="arrowLeft" title="上一奖品">
+            <svg viewBox="0 0 24 24" width="22" height="22">
+              <polyline points="15,4 7,12 15,20" fill="none" stroke="#e99809" stroke-width="4" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <form action="#">
 
-          <button class="btn-start" id="btnStart">开始开奖</button>
-        </form>
+            <button class="btn-start" id="btnStart">开始开奖</button>
+          </form>
 
 
 
-        <button class="prize-arrow-btn" id="arrowRight" title="下一奖品">
-          <svg viewBox="0 0 24 24" width="22" height="22">
-            <polyline points="9,4 17,12 9,20" fill="none" stroke="#e99809" stroke-width="4" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </button>
+          <button class="prize-arrow-btn" id="arrowRight" title="下一奖品">
+            <svg viewBox="0 0 24 24" width="22" height="22">
+              <polyline points="9,4 17,12 9,20" fill="none" stroke="#e99809" stroke-width="4" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
+
+    <!-- 设定页面的跳转地址的按钮 -->
+
+    <button class="setting-button" id="setting-button">⚙</button>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/mainPage.js"></script>
   </div>
-
-  <!-- 设定页面的跳转地址的按钮 -->
-
-  <button class="setting-button" id="setting-button">⚙</button>
-
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/mainPage.js"></script>
 </body>
 
 </html>

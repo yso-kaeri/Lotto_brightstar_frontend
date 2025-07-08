@@ -1,5 +1,13 @@
  @charset "UTF-8";
 
+
+
+
+
+
+
+
+ /* 背景様式のcss */
  body {
      background: linear-gradient(135deg, #a80000 0%, #f7d78b 100%);
      min-height: 100vh;
@@ -7,9 +15,9 @@
      display: flex;
      justify-content: center;
      align-items: center;
-
  }
 
+ /* 中奖番号表示エリア用CSS */
  .main-board {
      background: #b1060d;
      border-radius: 1.5em;
@@ -20,7 +28,7 @@
      overflow: hidden;
  }
 
- /* 左开奖区 */
+ /* 左側の当選番号エリア用CSS*/
  .left-panel {
 
      flex: 1.7;
@@ -33,6 +41,13 @@
      border-bottom-left-radius: 1.5em;
  }
 
+ .award-name{
+    font-size: 26px;
+    color: #b1060d;
+    font-weight: 700;
+ }
+
+ /* 会社logo使う、ｃｓｓ */
  .logo {
      width: 160px;
      /* 可调整 */
@@ -43,6 +58,7 @@
 
  }
 
+ /* タイトル使うｃｓｓ */
  .period-info {
      font-size: 1.17em;
      color: #601010;
@@ -51,7 +67,7 @@
      letter-spacing: 0.07em;
      margin-bottom: 18px;
  }
-
+/* 滚动区域CSS */
  .number-row {
      display: flex;
      justify-content: center;
@@ -92,6 +108,7 @@
      }
  }
 
+
  .gold-num-row {
      display: flex;
      gap: 20px;
@@ -129,20 +146,21 @@
 
 
 
- /* 显示中奖号码区 */
+ /* 当選番号表示エリア */
  .winner-list {
      display: flex;
      gap: 18px;
-     /* 圆之间的间距 */
+     /* 円の間の距離 */
      justify-content: center;
      align-items: center;
      margin-top: 22px;
-     /* 离上方数字远一点 */
+     
      min-height: 60px;
-     /* 防止内容变动跳动 */
+     
 
  }
 
+ /* あたり番号様式ｃｓｓ */
  .winner-ball {
      display: flex;
      align-items: center;
@@ -165,13 +183,6 @@
      transform: scale(1.12) rotate(-6deg);
      box-shadow: 0 2px 22px #ffd48099;
  }
-
-
-
-
-
-
-
 
 
  /* 右奖品区 */
@@ -297,6 +308,8 @@
      position: relative;
  }
 
+
+ /* 設定ボタンの様式のｃｓｓ */
  .setting-button {
      position: fixed;
      bottom: 30px;
