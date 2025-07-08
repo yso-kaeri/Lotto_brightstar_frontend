@@ -3,35 +3,39 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>獎品管理</title>
+	<title>設定画面</title>
+
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/settingPage.css">
 </head>
 
 <body class="container mt-5">
-	<h2>新增獎品</h2>
+	
+	<h1>賞品・賞設定</h1>
+	<img src="" alt="">
 	<form method="post" action="/uploadPrize" enctype="multipart/form-data" class="mb-5">
 		<div class="mb-3">
-			<label>獎品名稱</label>
+			<label>賞の名稱</label>
 			<input type="text" name="name" class="form-control" required>
 		</div>
 		<div class="mb-3">
-			<label>數量</label>
+			<label>賞品の數量</label>
 			<input type="number" name="quantity" class="form-control" required>
 		</div>
 		<div class="mb-3">
-			<label>圖片</label>
+			<label>賞品の写真</label>
 			<input type="file" name="imagePath" class="form-control" accept="image/*" required>
 		</div>
-		<button type="submit" class="btn btn-primary">上傳</button>
+		<button type="submit" class="btn btn-primary">アップロード</button>
 	</form>
 
-	<h3>獎品列表</h3>
+	<h3>賞と賞品の詳細</h3>
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th>名稱</th>
-				<th>數量</th>
-				<th>圖片</th>
+				<th>賞の名稱</th>
+				<th>賞品の數量</th>
+				<th>賞品の写真</th>
 				<th>刪除</th>
 			</tr>
 		</thead>
@@ -40,35 +44,17 @@
 				<td th:text="${prize.name}"></td>
 				<td th:text="${prize.quantity}"></td>
 				<td><img th:src="${prize.imagePath}" width="100" /></td>
-				<td><button type="button" class="delBut" th:data-name="${prize.name}"
+				<td><button type="button" class="btn btn-primary" th:data-name="${prize.name}"
 						th:onclick="deleteCompletely(this.getAttribute('data-name'), this);">削除</button></td>
 			</tr>
 		</tbody>
 	</table>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		function deleteCompletely(prizeName, buttonElement) {
-			if (!confirm(`本当に "${prizeName}" を削除しますか？`)) {
-				return;
-			}
+	<button class="btn btn-primary" onclick="history.back()">抽選画面に戻す</button>
 
-			$.ajax({
-				url: '/prize/delete',
-				type: 'DELETE',
-				data: {name: prizeName},
-				success: function (response) {
-					// 移除該筆資料的 <tr>
-					$(buttonElement).closest('tr').remove();
-					alert(`"${prizeName}" を削除しました！`);
-				},
-				error: function (xhr, status, error) {
-					console.error("削除失敗:", error);
-					alert(`"${prizeName}" の削除に失敗しました...`);
-				}
-			});
-		}
-	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="../js/settingPage.js"></script>
+
 </body>
 
 </html>
