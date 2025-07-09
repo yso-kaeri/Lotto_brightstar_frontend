@@ -106,11 +106,12 @@ function showPrize(idx) {
     if (!prizes[idx]) return;
     const prize = prizes[idx];
     document.getElementById('prizeTitle').textContent = prize.prizeName;
+    document.getElementById('awardName').textContent = prize.prizeName;
     document.getElementById('prizeQty').textContent = '总共：' + prize.quantity + ' 名';
 
     // 奖品图片
     if (prize.imagePath) {
-        document.getElementById('prizeImg').src = prize.imagePath;
+        document.getElementById('prizeImg').src = "http://localhost:8080" + prize.imagePath;
         document.getElementById('prizeImg').style.display = 'block';
     } 
     // else {

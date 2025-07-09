@@ -33,3 +33,7 @@ fetch('http://localhost:8080/api/winners')
 			console.error('載入得獎名單失敗:', error);
 			document.getElementById('winnerTbody').innerHTML = '<tr><td>系統異常，請稍後再試。</td></tr>';
 		});
+
+	document.getElementById('backMainPage').onclick = function(){
+    window.location.href = 'mainPage.html';
+};

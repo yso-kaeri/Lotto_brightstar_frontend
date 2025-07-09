@@ -69,6 +69,35 @@
 //         alert('アップロード失敗...');
 //     });
 // });
+document.addEventListener('DOMContentLoaded', function () {
+    loadPrizeTable();
+});
+
+function loadPrizeTable() {
+    fetch('http://localhost:8080/prizes')
+        .then(res => res.json())
+        .then(prizes => {
+            const tbody = document.getElementById('prizeTableBody');
+            tbody.innerHTML = ''; // 清空旧内容
+
+            prizes.forEach(prize => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${prize.prizeName}</td>
+                    <td>${prize.quantity}</td>
+                    <td><img src="http://localhost:8080${prize.imagePath}" width="100"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="deletePrize('${prize.prizeName}', this)">削除</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(err => {
+            console.error('賞品リスト取得失敗', err);
+            alert('賞品リスト取得失敗');
+        });
+}
 
 
 document.getElementById('uploadBtn').addEventListener('click', function () {
@@ -147,5 +176,7 @@ function deletePrize(prizeName, button) {
     });
 }
 
-
+document.getElementById('backMainPage').onclick = function(){
+    window.location.href = 'mainPage.html';
+};
 
