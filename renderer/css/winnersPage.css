@@ -1,0 +1,150 @@
+/* ======================================== */
+/* 全体背景：赤白グラデーション背景 */
+/* ======================================== */
+body {
+    background:
+       linear-gradient(
+           45deg, /* 紅白漸變底色的角度 */
+           #FF0000 0%,
+           #FFFFFF 100%
+       );
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ======================================== */
+/* 主内容区：main-board 样式 */
+/* ======================================== */
+.main-board {
+    background:
+       linear-gradient(180deg, #FFFFFF 0%, #F8F8F8 100%); /* Subtle white gradient */
+    background-blend-mode: overlay; /* Blend the pattern */
+    border-radius: 1.5em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 0, 0, 0.3); /* Softer shadow, subtle red outline */
+    display: flex;
+    flex-direction: column; /* Changed to column for content */
+    min-width: 800px; /* Adjusted width */
+    min-height: 600px; /* Adjusted height */
+    overflow: hidden;
+    border: none;
+    position: relative;
+    padding: 40px;
+    align-items: center;
+}
+
+.delete-section {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.delete-section p {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: 5px; /* Small margin above text */
+    font-size: 0.9em;
+    color: #B00000; /* Darker red for warning */
+}
+
+.delete-section:hover p {
+    opacity: 1;
+}
+
+/* ======================================== */
+/* 标题文字 */
+/* ======================================== */
+h2 {
+    color: #B00000; /* Darker red from mainPage */
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+}
+
+/* ======================================== */
+/* 表格 */
+/* ======================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    border-radius: 1em; /* Rounded corners */
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF; /* White background for table */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee; /* Lighter border */
+    color: #333; /* Dark text */
+}
+
+th {
+    background: #f0f0f0; /* Light grey header */
+    color: #B00000; /* Darker red for header text */
+    font-weight: bold;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* ======================================== */
+/* 按钮 */
+/* ======================================== */
+button {
+    background: linear-gradient(90deg, #ffaf3e 0%, #ffe265 100%); /* From mainPage btn-start */
+    color: #ad1109; /* From mainPage btn-start */
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 1.2em; /* Rounded corners */
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.18s;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 12px #fff8;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ffd658 0%, #ffaf3e 100%); /* From mainPage btn-start */
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px #ffcf3a;
+}
+
+/* Specific style for delete button */
+#deleteAllBtn {
+    background: linear-gradient(90deg, #FF0000 0%, #B00000 100%); /* Red gradient */
+    color: #FFFFFF;
+}
+
+#deleteAllBtn:hover {
+    background: linear-gradient(90deg, #B00000 0%, #FF0000 100%);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+/* Text styles */
+p {
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .main-board {
+        min-width: unset;
+        width: 95%;
+        padding: 20px;
+    }
+}
