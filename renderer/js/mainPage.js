@@ -1,7 +1,41 @@
 // ========== 左侧开奖逻辑 ==========
-const periodNumber = "一等奖";
 let lotteryNumbers = [];
-document.getElementById('awardName').textContent = periodNumber;
+document.getElementById('btnStart').onclick = function(){
+    document.getElementById('btnStart').onclick = function () {
+    const prize = prizes[curIdx];
+    fetch('http://localhost:8080/api/draw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            prizeName: prize.prizeName
+            
+        })
+    })
+    .then(res => res.json())
+    .then(result => {
+        // result 是对象：{ winners: [...] }
+        if (!result.winners || !Array.isArray(result.winners)) {
+            alert('后端返回中奖号码格式异常！');
+            console.error('后端返回:', result);
+            return;
+        }
+        lotteryNumbers = result.winners;  // 这里是数组了
+        document.getElementById('lastPrizeQuantity').textContent = '剩余：' + result.lastPrizeQuantity + ' 名';
+        renderNumbers();
+        
+        startLotteryAnimation()
+        
+
+    })
+    .catch(err => {
+        alert("抽奖失败，请稍后再试！");
+        console.error(err);
+    });
+};
+
+} 
+
+
 const numberRow = document.getElementById('numberRow');
 
 
@@ -23,7 +57,7 @@ function renderNumbers() {
         numberRow.appendChild(slot);
     }
 }
-renderNumbers();
+
 
 // --------- 滚轮动画逐个间隔1~2秒启动 ---------
 function startLotteryAnimation() {
@@ -60,13 +94,13 @@ function startLotteryAnimation() {
 function rollSlot(slot, finalNum, totalTime, cb) {
     slot.classList.add('rolling');
     let elapsed = 0;
-    let frame = 0;
     function tick() {
-        frame++;
+
+        
         let t = elapsed / totalTime;
         if (t > 1) t = 1;
         let delay = 50 + (120 - 50) * Math.pow(t, 2.3);
-        let num = Math.floor(Math.random() * 39 + 1);
+        let num = Math.floor(Math.random() * 1000);
         slot.textContent = pad3(num);
         if (elapsed < totalTime) {
             setTimeout(() => {
@@ -82,9 +116,7 @@ function rollSlot(slot, finalNum, totalTime, cb) {
     tick();
 }
 
-document.getElementById('btnStart').onclick = function () {
-    startLotteryAnimation();
-};
+
 
 
 // ========== 右侧奖品轮播 ==========
@@ -108,6 +140,8 @@ function showPrize(idx) {
     document.getElementById('prizeTitle').textContent = prize.prizeName;
     document.getElementById('awardName').textContent = prize.prizeName;
     document.getElementById('prizeQty').textContent = '总共：' + prize.quantity + ' 名';
+    
+
 
     // 奖品图片
     if (prize.imagePath) {
