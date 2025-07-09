@@ -17,15 +17,15 @@
 	<!-- <form method="post" action="/uploadPrize" enctype="multipart/form-data" class="mb-5"> -->
 		<form method="post" id="uploadForm" enctype="multipart/form-data" class="mb-5">
 		<div class="mb-3">
-			<label>賞の名稱</label>
+			<label>名稱</label>
 			<input type="text" name="prizeName" class="form-control" required>
 		</div>
 		<div class="mb-3">
-			<label>賞品の數量</label>
+			<label>數量</label>
 			<input type="number" name="quantity" class="form-control" required>
 		</div>
 		<div class="mb-3">
-			<label>賞品の写真</label>
+			<label>写真</label>
 			<input type="file" name="imagePath" class="form-control" accept="image/*" required>
 		</div>
 		 <button type="button" id="uploadBtn" class="btn btn-primary">アップロード</button>
@@ -35,10 +35,10 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th>賞の名稱</th>
-				<th>賞品の數量</th>
-				<th>賞品の写真</th>
-				<th>刪除</th>
+				<th>名稱</th>
+				<th>數量</th>
+				<th>写真</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<!-- <tbody th:if="${prizes != null and !prizes.isEmpty()}">

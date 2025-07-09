@@ -114,9 +114,6 @@ function showPrize(idx) {
         document.getElementById('prizeImg').src = "http://localhost:8080" + prize.imagePath;
         document.getElementById('prizeImg').style.display = 'block';
     }
-    // else {
-    //     document.getElementById('prizeImg').style.display = 'none'; // 没图片就隐藏
-    // }
 }
 
 document.getElementById('arrowLeft').onclick = function () {
@@ -127,33 +124,6 @@ document.getElementById('arrowRight').onclick = function () {
     curIdx = (curIdx + 1) % prizes.length;
     showPrize(curIdx);
 };
-
-
-
-
-
-// const prizeTitle = document.getElementById('prizeTitle');
-// const prizeImg = document.getElementById('prizeImg');
-// function updatePrize() {
-//     prizeTitle.textContent = prizes[curIdx].title;
-//     prizeImg.style.opacity = 0;
-//     setTimeout(() => {
-//         prizeImg.src = prizes[curIdx].img;
-//         prizeImg.style.opacity = 1;
-//     }, 180);
-//     // 同步左侧数字
-//     lotteryNumbers = prizes[curIdx].nums;
-//     renderNumbers();
-// }
-// document.getElementById('arrowLeft').onclick = function () {
-//     curIdx = (curIdx - 1 + prizes.length) % prizes.length;
-//     updatePrize();
-// };
-// document.getElementById('arrowRight').onclick = function () {
-//     curIdx = (curIdx + 1) % prizes.length;
-//     updatePrize();
-// };
-
 
 
 function showWinnerNumbers() {
@@ -169,27 +139,39 @@ document.getElementById('setting-button').addEventListener('click', function () 
 });
 
 
-// function toSettingPage() {
-//     const tosettingPage = document.getElementById('setting-button')
-//     tosettingPage.onclick = function () {
-//         window.location.href = 'settingPage.html';
-
-//     }
-// }
-// toSettingPage();
-
-
 document.getElementById('winner-button').addEventListener('click', function () {
     window.location.href = 'winnersPage.html';
 });
 
-// function toWinnerPage() {
-//     const toWinnerPage = document.getElementById('winner-button')
-//     toWinnerPage.onclick = function () {
-//         window.location.href = 'winnersPage.html';
+document.addEventListener('DOMContentLoaded', function () {
+    const participantModal = document.getElementById('participantModal');
+    const participantInput = document.getElementById('participantInput');
+    const participantConfirmBtn = document.getElementById('participantConfirmBtn');
+    const modalClose = document.getElementById('modalClose');
 
-//     }
-// }
-// toWinnerPage();
+    document.getElementById('setParticipantButton').addEventListener('click', function () {
+        participantModal.style.display = 'block';
+        participantInput.value = '';
+        participantInput.focus();
+    });
 
+    modalClose.addEventListener('click', function () {
+        participantModal.style.display = 'none';
+    });
 
+    participantConfirmBtn.addEventListener('click', function () {
+        const inputVal = parseInt(participantInput.value, 10);
+        if (!isNaN(inputVal) && inputVal > 0) {
+            console.log('参加人数：', inputVal);
+            participantModal.style.display = 'none';
+        } else {
+            alert('有効な数字を入力してください');
+        }
+    });
+
+    window.addEventListener('click', function (event) {
+        if (event.target === participantModal) {
+            participantModal.style.display = 'none';
+        }
+    });
+});

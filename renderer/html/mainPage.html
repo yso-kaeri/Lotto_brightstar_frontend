@@ -63,11 +63,24 @@
     <!-- 設定画面推移のボタン -->
     <button class="setting-button" id="setting-button">⚙</button>
 
+    <!-- 新增：选择抽奖人数按钮 -->
+  <button class="participant-button" id="setParticipantButton">👥</button>
     <!-- <script src="../js/jquery.min.js"></script> -->
 
   </div>
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../js/mainPage.js"></script>
+  
+  <!-- modal -->
+<div id="participantModal" class="modal">
+  <div class="modal-content">
+    <span id="modalClose" class="modal-close">&times;</span>
+    <h3>参加人数設定</h3>
+    <input type="number" id="participantInput" placeholder="参加人数を入力" />
+    <button id="participantConfirmBtn">決定</button>
+  </div>
+</div>
+
 </body>
 
 </html>

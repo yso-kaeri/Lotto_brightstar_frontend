@@ -37,3 +37,25 @@ fetch('http://localhost:8080/api/winners')
 	document.getElementById('backMainPage').onclick = function(){
     window.location.href = 'mainPage.html';
 };
+
+document.getElementById('deleteAllBtn').addEventListener('click', function () {
+			if (!confirm("全ての当選者を削除しますか？この操作は復元できない！")) return;
+
+			fetch('http://localhost:8080/api/deleteAll', {
+				method: 'DELETE'
+			})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error("サーバーエラー/当選者データがない");
+					}
+					return response.text();
+				})
+				.then(msg => {
+					alert(msg);
+					window.location.reload();
+				})
+				.catch(err => {
+					console.error('エラー:', err);
+					alert('削除失敗！');
+				});
+		});

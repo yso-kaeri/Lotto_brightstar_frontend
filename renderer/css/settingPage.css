@@ -1,191 +1,148 @@
 /* ======================================== */
-/* 全体背景：主页面风格のグラデーション背景 */
+/* 全体背景：赤白グラデーション背景 */
 /* ======================================== */
 body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif; /* フォント */
-    background: linear-gradient(135deg, #a80000 0%, #f7d78b 100%);
+    font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+    background: linear-gradient(135deg, #a80000 0%, #ffffff 100%);
 }
 
 /* ======================================== */
-/* 内容包裹容器：白+红系圆角卡片・シャドウ */
+/* 包裹容器：白底红影、圆角一致 */
 /* ======================================== */
-.main-setting-wrapper {
-    max-width: 1200px;
-    margin: 40px auto 0 auto;
-    background: linear-gradient(180deg, #fffbe7 60%, #f3cbae 100%);
-    border-radius: 32px;        /* 角丸 */
-    box-shadow: 0 8px 32px rgba(160, 0, 0, 0.23); /* 赤系シャドウ */
-    padding: 48px 48px 32px 48px;
+.main-setting-wrapper, .container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(168, 0, 0, 0.2);
+    padding: 32px;
 }
 
 /* ======================================== */
-/* タイトル文字（h1/h2） */
+/* 标题文字（红色高级感） */
 /* ======================================== */
-h1, h2 {
-    color: gold;          /* 深い赤色 */
+h1, h2, h3 {
+    color: #a80000;
     font-weight: bold;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
+    text-align: center;
     margin-bottom: 24px;
 }
+
 h1 {
-    
-    font-size: 2.6rem;
-    margin-bottom: 32px;
+    font-size: 2rem;
 }
-h2 {
-    font-size: 1.5rem;
-    margin-top: 36px;
+
+h2, h3 {
+    font-size: 1.4rem;
 }
 
 /* ======================================== */
-/* ラベル・見出し（label, th） */
+/* 标签文字（红色） */
 /* ======================================== */
 label, th {
-    color:gold;           /* 深い赤色 */
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-    letter-spacing: 0.03em;
-}
-
-/* ======================================== */
-/* 入力フォーム全体の間隔 */
-/* ======================================== */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;    /* 要素間の間隔 */
-}
-
-/* ======================================== */
-/* テキスト入力欄・ファイル入力欄 */
-/* ======================================== */
-input[type="text"], input[type="file"] {
-    padding: 12px 16px;
-    border-radius: 16px;    /* 大きめの角丸 */
-    border: 2px solid #f3cbae;
+    color: #a80000;
+    font-weight: 600;
     font-size: 1rem;
-    margin-bottom: 12px;
-    background: #fff;
-    color: #5c2b15;         /* 濃い茶色、可読性UP */
-    transition: border-color 0.2s;
+    margin-bottom: 6px;
 }
-input[type="text"]:focus, input[type="file"]:focus {
+
+/* ======================================== */
+/* 输入框：统一圆角红边框 */
+/* ======================================== */
+input[type="text"], input[type="number"], input[type="file"] {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid #a80000;
+    font-size: 1rem;
+    background: #fff;
+    color: #333;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="file"]:focus {
     border-color: #a80000;
     outline: none;
+    box-shadow: 0 0 4px rgba(168, 0, 0, 0.3);
 }
 
 /* ======================================== */
-/* 主要ボタン（アップロード・戻るなど） */
+/* 按钮（红底白字、hover加深） */
 /* ======================================== */
-button, input[type="button"], .back-btn {
-    background: linear-gradient(90deg, #ffd15c 30%, #ffb300 100%);
-    color: #a80000;             /* 深い赤色の文字 */
-    font-size: 1.1rem;
+button, .btn-primary, input[type="button"] {
+    background: #a80000;
+    color: #ffffff;
+    font-size: 1rem;
     font-weight: bold;
     border: none;
-    border-radius: 18px;
-    padding: 12px 36px;
-    box-shadow: 0 2px 10px rgba(160,0,0,0.13);
+    border-radius: 12px;
+    padding: 10px 24px;
     cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.2s, transform 0.1s, color 0.2s;
+    transition: background 0.2s, transform 0.1s;
     letter-spacing: 0.02em;
 }
-button:hover, input[type="button"]:hover, .back-btn:hover {
-    background: linear-gradient(90deg, #ffb300 60%, #ffd15c 100%);
-    color: #a80000;
-    transform: translateY(-1px) scale(1.04);
+
+button:hover, .btn-primary:hover, input[type="button"]:hover {
+    background: #870000;
+    transform: translateY(-2px);
 }
 
 /* ======================================== */
-/* 削除ボタン（delete） */
-/* ======================================== */
-.delete-btn {
-    background: linear-gradient(90deg, #c73020 60%, #ea4c46 100%);
-    color: #fff;                /* 白色文字 */
-    padding: 8px 20px;
-    border-radius: 12px;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-weight: bold;
-}
-.delete-btn:hover {
-    background: linear-gradient(90deg, #a80000 80%, #c73020 100%);
-    color: #fff;
-}
-
-/* ======================================== */
-/* 表格（賞と賞品の詳細） */
+/* 表格：白底红字，统一圆角阴影 */
 /* ======================================== */
 table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-top: 24px;
-    background: #fffbe7;
-    border-radius: 18px;
-    box-shadow: 0 2px 12px rgba(160, 0, 0, 0.09);
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 4px 12px rgba(168, 0, 0, 0.1);
 }
-th {
-    background: #fff1bc;
-    color: #a80000;
-    font-weight: bold;
-}
-td {
-    background: #fffefa;
-    color: #5c2b15;
-    border-bottom: 1px solid #f3cbae;
-    font-size: 1.07rem;
+
+th, td {
+    padding: 12px;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 }
+
+th {
+    background: #f9f9f9;
+    color: #a80000;
+}
+
+td {
+    background: #ffffff;
+    color: #333;
+}
+
 tr:last-child td {
     border-bottom: none;
 }
 
 /* ======================================== */
-/* 戻るボタン（戻る用・主ボタンと統一） */
+/* Logo大小固定在左上 */
 /* ======================================== */
-.back-btn {
-    display: inline-block;
-    margin-top: 28px;
-    margin-bottom: 0;
+.logo {
+    width: 140px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 /* ======================================== */
-/* レスポンシブ対応（スマホ・タブレット） */
+/* 响应式调整 */
 /* ======================================== */
-@media (max-width: 800px) {
-    .main-setting-wrapper {
-        padding: 16px 4vw;
-    }
-    table, th, td {
-        font-size: 0.98rem;
+@media (max-width: 600px) {
+    .main-setting-wrapper, .container {
+        padding: 20px;
     }
     h1 {
         font-size: 1.5rem;
     }
-    h2 {
-        font-size: 1.1rem;
+    h2, h3 {
+        font-size: 1.2rem;
     }
 }
-
-h3{
-    color: gold;
-}
-
-/* 会社logo使う、ｃｓｓ */
-.logo {
-     width: 160px;
-     /* 可调整 */
-     z-index: 9999;
-    
-     top: 5px;
-     left: 5px;
- }
