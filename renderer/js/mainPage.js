@@ -1,6 +1,6 @@
 // ========== 左侧开奖逻辑 ==========
 const periodNumber = "一等奖";
-let lotteryNumbers = [333, 2, 213, 888, 888];
+let lotteryNumbers = [];
 document.getElementById('awardName').textContent = periodNumber;
 const numberRow = document.getElementById('numberRow');
 
@@ -88,33 +88,70 @@ document.getElementById('btnStart').onclick = function () {
 
 
 // ========== 右侧奖品轮播 ==========
-const prizes = [
-    { title: "一等奖品", img: "../img/景品.png" },
-    { title: "二等大奖", img: "../img/景品２.png" },
-    { title: "三等奖品", img: "../img/景品３.png" }
-];
+let prizes = [];
 let curIdx = 0;
-const prizeTitle = document.getElementById('prizeTitle');
-const prizeImg = document.getElementById('prizeImg');
-function updatePrize() {
-    prizeTitle.textContent = prizes[curIdx].title;
-    prizeImg.style.opacity = 0;
-    setTimeout(() => {
-        prizeImg.src = prizes[curIdx].img;
-        prizeImg.style.opacity = 1;
-    }, 180);
-    // 同步左侧数字
-    lotteryNumbers = prizes[curIdx].nums;
-    renderNumbers();
+
+window.onload = function(){
+    fetch('http://localhost:8080/api/getAllPrize')
+        .then(res => res.json())
+        .then(data => {
+            prizes = data;
+            
+            showPrize(curIdx);  // 只显示第一个奖项
+        });
 }
+
+function showPrize(idx) {
+     console.log("showPrize idx=", idx, prizes[idx]);
+    if (!prizes[idx]) return;
+    const prize = prizes[idx];
+    document.getElementById('prizeTitle').textContent = prize.prizeName;
+    document.getElementById('prizeQty').textContent = '总共：' + prize.quantity + ' 名';
+
+    // 奖品图片
+    if (prize.imagePath) {
+        document.getElementById('prizeImg').src = prize.imagePath;
+        document.getElementById('prizeImg').style.display = 'block';
+    } 
+    // else {
+    //     document.getElementById('prizeImg').style.display = 'none'; // 没图片就隐藏
+    // }
+}
+
 document.getElementById('arrowLeft').onclick = function () {
     curIdx = (curIdx - 1 + prizes.length) % prizes.length;
-    updatePrize();
+    showPrize(curIdx);
 };
 document.getElementById('arrowRight').onclick = function () {
     curIdx = (curIdx + 1) % prizes.length;
-    updatePrize();
+    showPrize(curIdx);
 };
+
+
+
+
+
+// const prizeTitle = document.getElementById('prizeTitle');
+// const prizeImg = document.getElementById('prizeImg');
+// function updatePrize() {
+//     prizeTitle.textContent = prizes[curIdx].title;
+//     prizeImg.style.opacity = 0;
+//     setTimeout(() => {
+//         prizeImg.src = prizes[curIdx].img;
+//         prizeImg.style.opacity = 1;
+//     }, 180);
+//     // 同步左侧数字
+//     lotteryNumbers = prizes[curIdx].nums;
+//     renderNumbers();
+// }
+// document.getElementById('arrowLeft').onclick = function () {
+//     curIdx = (curIdx - 1 + prizes.length) % prizes.length;
+//     updatePrize();
+// };
+// document.getElementById('arrowRight').onclick = function () {
+//     curIdx = (curIdx + 1) % prizes.length;
+//     updatePrize();
+// };
 
 
 
