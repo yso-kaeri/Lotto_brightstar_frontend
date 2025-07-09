@@ -2,7 +2,12 @@
 
  /* 背景様式のcss */
  body {
-     background: linear-gradient(135deg, #a80000 0%, #f7d78b 100%);
+     background:
+        linear-gradient(
+            45deg, /* 紅白漸變底色的角度 */
+            #FF0000 0%,
+            #FFFFFF 100%
+        );
      min-height: 100vh;
      font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
      display: flex;
