@@ -313,39 +313,54 @@
 
  /* 設定ボタンの様式のｃｓｓ */
  .setting-button {
-     position: fixed;
-     bottom: 30px;
-     right: 30px;
      z-index: 99;
-     font-size: 32px;
-     background: none;
-     border: none;
-     cursor: pointer;
-     color: red;
- }
-
-.winner-button{
-     position: fixed;
-     bottom: 80px;
-     right: 35px;
-     z-index: 99;
-     font-size: 20px;
-     background: #f7cd68;
-     border: none;
-     cursor: pointer;
-     color: red;
-
-}
-.participant-button {
-     position: fixed;
-     bottom: 5px;
-     right: 20px;
-     z-index: 99;
-     font-size: 32px;
+     font-size: 32px; /* Re-added */
      background: none;
      border: none;
      cursor: pointer;
      color: rgb(251, 230, 230);
+     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.setting-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.winner-button{
+     z-index: 99;
+     /* font-size: 20px; */ /* Kept commented as SVG handles size */
+     background: none;
+     border: none;
+     cursor: pointer;
+     color: rgb(251, 230, 230);
+     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.winner-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.participant-button {
+     z-index: 99;
+     font-size: 32px; /* Re-added */
+     background: none;
+     border: none;
+     cursor: pointer;
+     color: rgb(251, 230, 230);
+     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.participant-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Common button styling for alignment and sizing */
+.winner-button, .setting-button, .participant-button {
+    width: 44px; /* Consistent size */
+    height: 44px; /* Consistent size */
+    display: flex; /* Enable flexbox for centering content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
 }
 .modal {
   display: none;
@@ -369,5 +384,26 @@
   float: right;
   font-size: 20px;
   cursor: pointer;
+}
+
+.bottom-right-buttons {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px); /* Optional: for a frosted glass effect */
+    -webkit-backdrop-filter: blur(5px); /* For Safari */
+    z-index: 99; /* Ensure it's above other content */
+}
+
+.bottom-right-buttons button:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    padding-right: 10px;
 }
 
