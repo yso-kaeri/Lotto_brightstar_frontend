@@ -61,25 +61,45 @@ function renderNumbers() {
 
 // --------- 滚轮动画逐个间隔1~2秒启动 ---------
 function startLotteryAnimation() {
-    document.getElementById('btnStart').disabled = true;
-    let slots = [];
-    for (let i = 0; i < lotteryNumbers.length; i++) {
-        slots.push(document.getElementById('slot' + i));
-    }
-    slots.forEach(slot => {
-        slot.textContent = '---';
-        slot.classList.remove('rolling');
-    });
+document.getElementById('btnStart').disabled = true;
 
-    // 串行动画
-    let i = 0;
-    function nextSlot() {
-        if (i >= slots.length) {
-            showWinnerNumbers();
-            document.getElementById('btnStart').disabled = false;
-            return;
-        }
-        rollSlot(slots[i], lotteryNumbers[i], 2200 - i * 180, function () {
+const winnerList = document.getElementById('winnerList');
+ winnerList.innerHTML = ''; // 先清空
+
+
+
+
+let slots = [];
+for (let i = 0; i < lotteryNumbers.length; i++) {
+slots.push(document.getElementById('slot' + i));
+}
+slots.forEach(slot => {
+ slot.textContent = '---';
+ slot.classList.remove('rolling');
+ });
+
+ // 串行动画
+let i = 0;
+ function nextSlot() {
+if (i >= slots.length) {
+ showWinnerNumbers();
+ document.getElementById('btnStart').disabled = false;
+ return;
+ }
+ rollSlot(slots[i], lotteryNumbers[i], 2200 - i * 180, function () {
+
+
+showOneWinnerNumber(i);
+
+function showOneWinnerNumber(n) {
+// n表示当前第几个中奖号码
+ const winnerList = document.getElementById('winnerList');
+ // 只渲染前n+1个中奖号码
+ winnerList.innerHTML = lotteryNumbers.slice(0, n + 1).map(i =>
+ `<span class="winner-ball">${pad3(i)}</span>`
+ ).join('');
+ winnerList.style.display = 'flex';
+}
             // 停下后随机等待1~2秒
             const delay = 1000 + Math.random() * 1000;
             setTimeout(() => {
