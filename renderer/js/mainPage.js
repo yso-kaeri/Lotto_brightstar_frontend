@@ -1,39 +1,37 @@
 // ========== 左侧开奖逻辑 ==========
 let lotteryNumbers = [];
-document.getElementById('btnStart').onclick = function(){
-    document.getElementById('btnStart').onclick = function () {
+document.getElementById('btnStart').onclick = function () {
     const prize = prizes[curIdx];
     fetch('http://localhost:8080/api/draw', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             prizeName: prize.prizeName
-            
+
         })
     })
-    .then(res => res.json())
-    .then(result => {
-        // result 是对象：{ winners: [...] }
-        if (!result.winners || !Array.isArray(result.winners)) {
-            alert('后端返回中奖号码格式异常！');
-            console.error('后端返回:', result);
-            return;
-        }
-        lotteryNumbers = result.winners;  // 这里是数组了
-        document.getElementById('lastPrizeQuantity').textContent = '剩余：' + result.lastPrizeQuantity + ' 名';
-        renderNumbers();
-        
-        startLotteryAnimation()
-        
+        .then(res => res.json())
+        .then(result => {
+            // result 是对象：{ winners: [...] }
+            if (!result.winners || !Array.isArray(result.winners)) {
+                alert('后端返回中奖号码格式异常！');
+                console.error('后端返回:', result);
+                return;
+            }
+            lotteryNumbers = result.winners;  // 这里是数组了
+            document.getElementById('lastPrizeQuantity').textContent = '剩余：' + result.lastPrizeQuantity + ' 名';
+            renderNumbers();
 
-    })
-    .catch(err => {
-        alert("抽奖失败，请稍后再试！");
-        console.error(err);
-    });
+            startLotteryAnimation()
+
+
+        })
+        .catch(err => {
+            alert("抽奖失败，请稍后再试！");
+            console.error(err);
+        });
 };
 
-} 
 
 
 const numberRow = document.getElementById('numberRow');
@@ -61,45 +59,45 @@ function renderNumbers() {
 
 // --------- 滚轮动画逐个间隔1~2秒启动 ---------
 function startLotteryAnimation() {
-document.getElementById('btnStart').disabled = true;
+    document.getElementById('btnStart').disabled = true;
 
-const winnerList = document.getElementById('winnerList');
- winnerList.innerHTML = ''; // 先清空
-
-
+    const winnerList = document.getElementById('winnerList');
+    winnerList.innerHTML = ''; // 先清空
 
 
-let slots = [];
-for (let i = 0; i < lotteryNumbers.length; i++) {
-slots.push(document.getElementById('slot' + i));
-}
-slots.forEach(slot => {
- slot.textContent = '---';
- slot.classList.remove('rolling');
- });
-
- // 串行动画
-let i = 0;
- function nextSlot() {
-if (i >= slots.length) {
- showWinnerNumbers();
- document.getElementById('btnStart').disabled = false;
- return;
- }
- rollSlot(slots[i], lotteryNumbers[i], 2200 - i * 180, function () {
 
 
-showOneWinnerNumber(i);
+    let slots = [];
+    for (let i = 0; i < lotteryNumbers.length; i++) {
+        slots.push(document.getElementById('slot' + i));
+    }
+    slots.forEach(slot => {
+        slot.textContent = '---';
+        slot.classList.remove('rolling');
+    });
 
-function showOneWinnerNumber(n) {
-// n表示当前第几个中奖号码
- const winnerList = document.getElementById('winnerList');
- // 只渲染前n+1个中奖号码
- winnerList.innerHTML = lotteryNumbers.slice(0, n + 1).map(i =>
- `<span class="winner-ball">${pad3(i)}</span>`
- ).join('');
- winnerList.style.display = 'flex';
-}
+    // 串行动画
+    let i = 0;
+    function nextSlot() {
+        if (i >= slots.length) {
+            showWinnerNumbers();
+            document.getElementById('btnStart').disabled = false;
+            return;
+        }
+        rollSlot(slots[i], lotteryNumbers[i], 2200 - i * 180, function () {
+
+
+            showOneWinnerNumber(i);
+
+            function showOneWinnerNumber(n) {
+                // n表示当前第几个中奖号码
+                const winnerList = document.getElementById('winnerList');
+                // 只渲染前n+1个中奖号码
+                winnerList.innerHTML = lotteryNumbers.slice(0, n + 1).map(i =>
+                    `<span class="winner-ball">${pad3(i)}</span>`
+                ).join('');
+                winnerList.style.display = 'flex';
+            }
             // 停下后随机等待1~2秒
             const delay = 1000 + Math.random() * 1000;
             setTimeout(() => {
@@ -116,7 +114,7 @@ function rollSlot(slot, finalNum, totalTime, cb) {
     let elapsed = 0;
     function tick() {
 
-        
+
         let t = elapsed / totalTime;
         if (t > 1) t = 1;
         let delay = 50 + (120 - 50) * Math.pow(t, 2.3);
@@ -160,7 +158,7 @@ function showPrize(idx) {
     document.getElementById('prizeTitle').textContent = prize.prizeName;
     document.getElementById('awardName').textContent = prize.prizeName;
     document.getElementById('prizeQty').textContent = '总共：' + prize.quantity + ' 名';
-    
+
 
 
     // 奖品图片
