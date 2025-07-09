@@ -55,7 +55,7 @@ function startLotteryAnimation() {
         });
     }
     nextSlot();
-    
+
 }
 function rollSlot(slot, finalNum, totalTime, cb) {
     slot.classList.add('rolling');
@@ -91,18 +91,18 @@ document.getElementById('btnStart').onclick = function () {
 let prizes = [];
 let curIdx = 0;
 
-window.onload = function(){
+window.onload = function () {
     fetch('http://localhost:8080/api/getAllPrize')
         .then(res => res.json())
         .then(data => {
             prizes = data;
-            
+
             showPrize(curIdx);  // 只显示第一个奖项
         });
 }
 
 function showPrize(idx) {
-     console.log("showPrize idx=", idx, prizes[idx]);
+    console.log("showPrize idx=", idx, prizes[idx]);
     if (!prizes[idx]) return;
     const prize = prizes[idx];
     document.getElementById('prizeTitle').textContent = prize.prizeName;
@@ -113,7 +113,7 @@ function showPrize(idx) {
     if (prize.imagePath) {
         document.getElementById('prizeImg').src = "http://localhost:8080" + prize.imagePath;
         document.getElementById('prizeImg').style.display = 'block';
-    } 
+    }
     // else {
     //     document.getElementById('prizeImg').style.display = 'none'; // 没图片就隐藏
     // }
@@ -156,33 +156,40 @@ document.getElementById('arrowRight').onclick = function () {
 
 
 
-function showWinnerNumbers(){
+function showWinnerNumbers() {
     const winnerList = document.getElementById('winnerList');
-   winnerList.innerHTML =  lotteryNumbers.map(n => 
-      `<span class="winner-ball">${pad3(n)}</span>`
+    winnerList.innerHTML = lotteryNumbers.map(n =>
+        `<span class="winner-ball">${pad3(n)}</span>`
     ).join('');
-    winnerList.style.display = 'flex'; 
+    winnerList.style.display = 'flex';
 }
 
-
-function toSettingPage(){
-    const tosettingPage = document.getElementById('setting-button')
-    tosettingPage.onclick = function(){
-        window.location.href = 'settingPage.html';
-
-    }
-}
-
-toSettingPage();
+document.getElementById('setting-button').addEventListener('click', function () {
+    window.location.href = 'settingPage.html';
+});
 
 
-function toWinnerPage(){
-    const toWinnerPage = document.getElementById('winner-button')
-    toWinnerPage.onclick = function(){
-        window.location.href = 'winnersPage.html';
+// function toSettingPage() {
+//     const tosettingPage = document.getElementById('setting-button')
+//     tosettingPage.onclick = function () {
+//         window.location.href = 'settingPage.html';
 
-    }
-}
-toWinnerPage();
+//     }
+// }
+// toSettingPage();
+
+
+document.getElementById('winner-button').addEventListener('click', function () {
+    window.location.href = 'winnersPage.html';
+});
+
+// function toWinnerPage() {
+//     const toWinnerPage = document.getElementById('winner-button')
+//     toWinnerPage.onclick = function () {
+//         window.location.href = 'winnersPage.html';
+
+//     }
+// }
+// toWinnerPage();
 
 
