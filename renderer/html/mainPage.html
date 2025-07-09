@@ -41,10 +41,7 @@
                 stroke-linejoin="round" />
             </svg>
           </button>
-          <form action="#">
-
-            <button class="btn-start" id="btnStart">开始开奖</button>
-          </form>
+          <button class="btn-start" id="btnStart">开始开奖</button>
 
 
 
@@ -61,29 +58,45 @@
     <!-- Bottom right buttons container -->
     <div class="bottom-right-buttons">
       <!-- 当選者一覧ページ推移のボタン -->
-      <button class="winner-button" id="winner-button" title="履歴"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></button>
+      <button class="winner-button" id="winner-button" title="履歴"><svg xmlns="http://www.w3.org/2000/svg" width="32"
+          height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="feather feather-list">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg></button>
 
       <!-- 設定画面推移のボタン -->
       <button class="setting-button" id="setting-button" title="設定">⚙</button>
 
       <!-- 新增：选择抽奖人数按钮 -->
-      <button class="participant-button" id="setParticipantButton" title="人数"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></button>
+      <button class="participant-button" id="setParticipantButton" title="人数"><svg xmlns="http://www.w3.org/2000/svg"
+          width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg></button>
     </div>
     <!-- <script src="../js/jquery.min.js"></script> -->
 
   </div>
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../js/mainPage.js"></script>
-  
+
   <!-- modal -->
-<div id="participantModal" class="modal">
-  <div class="modal-content">
-    <span id="modalClose" class="modal-close">&times;</span>
-    <h3>参加人数設定</h3>
-    <input type="number" id="participantInput" placeholder="参加人数を入力" />
-    <button id="participantConfirmBtn">決定</button>
+  <div id="participantModal" class="modal">
+    <div class="modal-content">
+      <span id="modalClose" class="modal-close">&times;</span>
+      <h3>参加人数設定</h3>
+      <input type="number" id="participantInput" placeholder="参加人数を入力" />
+      <button id="participantConfirmBtn">決定</button>
+    </div>
   </div>
-</div>
 
 </body>
 
