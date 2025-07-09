@@ -361,6 +361,7 @@
     display: flex; /* Enable flexbox for centering content */
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
+    border-radius: 8px; /* Added for rounded corners */
 }
 .modal {
   display: none;
