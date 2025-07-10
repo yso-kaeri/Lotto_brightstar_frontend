@@ -33,9 +33,6 @@
 
  /* 左側の当選番号エリア用CSS*/
  .left-panel {
-    width: 800px;
-    height: 300px;
-
 
      flex: 1.7;
      padding: 32px 32px 0 32px;
@@ -46,7 +43,7 @@
      border-top-left-radius: 1.5em;
      border-bottom-left-radius: 1.5em;
      border-right: none; /* 移除此邊框 */
-     box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.08); /* Subtle inner shadow */
+     /* box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.08); */ /* Subtle inner shadow */
  }
 
  .award-name{
