@@ -18,14 +18,8 @@
  /* 中奖番号表示エリア用CSS */
  .main-board {
      background:
-        linear-gradient(180deg, #FFFFFF 0%, #F8F8F8 100%), /* Subtle white gradient */
-        repeating-linear-gradient(
-            45deg,
-            rgba(0,0,0,0.02) 0px,
-            rgba(0,0,0,0.02) 2px,
-            transparent 2px,
-            transparent 40px
-        ); /* Very subtle black lines */
+        white; /* Subtle white gradient */
+         /* Very subtle black lines */
      background-blend-mode: overlay; /* Blend the pattern */
      border-radius: 1.5em;
      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 0, 0, 0.3); /* Softer shadow, subtle red outline */
@@ -39,6 +33,9 @@
 
  /* 左側の当選番号エリア用CSS*/
  .left-panel {
+    width: 800px;
+    height: 300px;
+
 
      flex: 1.7;
      padding: 32px 32px 0 32px;
