@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // “开始开奖”按钮
   document.getElementById('btnStart').addEventListener('click', () => {
     if (participantCount == null) {
-      alert('请先设置总参加人数');
+      showMsg('参加する総人数を設定してください');
       return;
     }
     const prize = prizes[curIdx];
