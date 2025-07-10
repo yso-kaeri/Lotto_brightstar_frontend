@@ -246,10 +246,17 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.getElementById('arrowLeft').onclick = function () {
 			curIdx = (curIdx - 1 + prizes.length) % prizes.length;
 			showPrize(curIdx);
+
+			winnerList.innerHTML = ''; 
+			numberRow.innerHTML='';
 		};
 		document.getElementById('arrowRight').onclick = function () {
 			curIdx = (curIdx + 1) % prizes.length;
 			showPrize(curIdx);
+
+
+			winnerList.innerHTML = ''; 
+			numberRow.innerHTML='';
 		};
 
 
