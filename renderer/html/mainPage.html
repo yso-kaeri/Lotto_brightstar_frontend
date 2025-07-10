@@ -9,21 +9,41 @@
 </head>
 
 <body>
-  <div class="main-board-wrapper">
+	<div class="main-board-wrapper">
 
-    <img class="logo" src="../img/会社Logo.png" alt="会社logo" />
+		<img class="logo" src="../img/会社Logo.png" alt="会社logo" />
 
-    <div class="main-board">
-      <!-- 左开奖数字滚轮区 -->
-      <div class="left-panel">
+		<div class="main-board">
+			<!-- 左开奖数字滚轮区 -->
+			<div class="left-panel">
 
-        <div class="period-info" id="periodInfo">忘年会抽選システム</div>
-        <div class="award-name" id="awardName"></div>
+				<div class="period-info" id="periodInfo">忘年会抽選システム</div>
+				<div class="award-name" id="awardName"></div>
 
-        <div class="number-row" id="numberRow"></div>
-        <div class="winner-list" id="winnerList"></div>
+				<div class="number-row" id="numberRow"></div>
+				<div class="winner-list" id="winnerList"></div>
 
 
+<<<<<<< HEAD
+			</div>
+			<!-- 右奖品图片轮播+开奖按钮区 -->
+			<div class="right-panel">
+				<div class="prize-img-box">
+					<img src="" alt="奖品图片" class="prize-img-show" id="prizeImg" />
+				</div>
+				<div class="prize-img-title" id="prizeTitle"></div>
+				<div class="prize-img-title" id="prizeQty"></div>
+				<div class="prize-img-title" id="lastPrizeQuantity"></div>
+				<!-- <div class="prize-img-title" id="prizeTitle2"></div> -->
+				<div class="prize-btn-row">
+					<button class="prize-arrow-btn" id="arrowLeft" title="上一奖品">
+						<svg viewBox="0 0 24 24" width="22" height="22">
+							<polyline points="15,4 7,12 15,20" fill="none" stroke="#e99809" stroke-width="4"
+								stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</button>
+					<button class="btn-start" id="btnStart">开始开奖</button>
+=======
       </div>
       <!-- 右奖品图片轮播+开奖按钮区 -->
       <div class="right-panel">
@@ -42,19 +62,35 @@
             </svg>
           </button>
           <button class="btn-start" id="btnStart">开始开奖</button>
+>>>>>>> ca681b6e59e6e329287d10d2ac31e7f8c8b2b121
 
 
 
-          <button class="prize-arrow-btn" id="arrowRight" title="下一奖品">
-            <svg viewBox="0 0 24 24" width="22" height="22">
-              <polyline points="9,4 17,12 9,20" fill="none" stroke="#e99809" stroke-width="4" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
+					<button class="prize-arrow-btn" id="arrowRight" title="下一奖品">
+						<svg viewBox="0 0 24 24" width="22" height="22">
+							<polyline points="9,4 17,12 9,20" fill="none" stroke="#e99809" stroke-width="4"
+								stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
 
+<<<<<<< HEAD
+		<!-- Bottom right buttons container -->
+		<div class="bottom-right-buttons">
+			<!-- 当選者一覧ページ推移のボタン -->
+			<button class="winner-button" id="winner-button" title="履歴"><svg xmlns="http://www.w3.org/2000/svg"
+					width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+					<line x1="8" y1="6" x2="21" y2="6"></line>
+					<line x1="8" y1="12" x2="21" y2="12"></line>
+					<line x1="8" y1="18" x2="21" y2="18"></line>
+					<line x1="3" y1="6" x2="3.01" y2="6"></line>
+					<line x1="3" y1="12" x2="3.01" y2="12"></line>
+					<line x1="3" y1="18" x2="3.01" y2="18"></line>
+				</svg></button>
+=======
     <!-- Bottom right buttons container -->
     <div class="bottom-right-buttons">
       <!-- 当選者一覧ページ推移のボタン -->
@@ -68,10 +104,33 @@
           <line x1="3" y1="12" x2="3.01" y2="12"></line>
           <line x1="3" y1="18" x2="3.01" y2="18"></line>
         </svg></button>
+>>>>>>> ca681b6e59e6e329287d10d2ac31e7f8c8b2b121
 
-      <!-- 設定画面推移のボタン -->
-      <button class="setting-button" id="setting-button" title="設定">⚙</button>
+			<!-- 設定画面推移のボタン -->
+			<button class="setting-button" id="setting-button" title="設定">⚙</button>
 
+<<<<<<< HEAD
+			<!-- 新增：选择抽奖人数按钮 -->
+			<div style="margin-bottom: 10px;">
+				<label for="totalInput">總參加人數：</label>
+				<input type="number" id="totalInput" placeholder="請輸入總人數" min="1" />
+			</div>
+		</div>
+		<!-- <script src="../js/jquery.min.js"></script> -->
+
+	</div>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/mainPage.js"></script>
+
+	<div id="participantModal" class="modal">
+		<div class="modal-content">
+			<span id="modalClose" class="modal-close">&times;</span>
+			<h3>参加人数設定</h3>
+			<input type="number" id="participantInput" placeholder="参加人数を入力" />
+			<button id="participantConfirmBtn">決定</button>
+		</div>
+	</div>
+=======
       <!-- 新增：选择抽奖人数按钮 -->
       <button class="participant-button" id="setParticipantButton" title="人数"><svg xmlns="http://www.w3.org/2000/svg"
           width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -97,6 +156,7 @@
       <button id="participantConfirmBtn">決定</button>
     </div>
   </div>
+>>>>>>> ca681b6e59e6e329287d10d2ac31e7f8c8b2b121
 
 </body>
 
