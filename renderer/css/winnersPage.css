@@ -1,5 +1,5 @@
 /* ======================================== */
-/* 全体背景：赤白グラデーション背景 */
+/* 通用/基礎樣式 */
 /* ======================================== */
 body {
     background:
@@ -16,7 +16,7 @@ body {
 }
 
 /* ======================================== */
-/* 主内容区：main-board 样式 */
+/* 主要佈局 */
 /* ======================================== */
 .main-board {
     background:
@@ -57,7 +57,7 @@ body {
 }
 
 /* ======================================== */
-/* 标题文字 */
+/* 排版 */
 /* ======================================== */
 h2 {
     color: #B00000; /* Darker red from mainPage */
@@ -66,6 +66,12 @@ h2 {
     text-align: center;
     margin-bottom: 24px;
     font-size: 1.8rem;
+}
+
+p {
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
 }
 
 /* ======================================== */
@@ -99,11 +105,11 @@ tr:last-child td {
 }
 
 /* ======================================== */
-/* 按钮 */
+/* 按鈕 */
 /* ======================================== */
-button {
-    background: linear-gradient(90deg, #ffaf3e 0%, #ffe265 100%); /* From mainPage btn-start */
-    color: #ad1109; /* From mainPage btn-start */
+#deleteAllBtn {
+    background: linear-gradient(90deg, #FF0000 0%, #B00000 100%); /* Red gradient */
+    color: #FFFFFF;
     font-size: 1rem;
     font-weight: bold;
     border: none;
@@ -116,31 +122,81 @@ button {
     margin-top: 15px;
 }
 
-button:hover {
-    background: linear-gradient(90deg, #ffd658 0%, #ffaf3e 100%); /* From mainPage btn-start */
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px #ffcf3a;
-}
-
-/* Specific style for delete button */
-#deleteAllBtn {
-    background: linear-gradient(90deg, #FF0000 0%, #B00000 100%); /* Red gradient */
-    color: #FFFFFF;
-}
-
 #deleteAllBtn:hover {
     background: linear-gradient(90deg, #B00000 0%, #FF0000 100%);
+    transform: translateY(-2px);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
 }
 
-/* Text styles */
-p {
-    color: #333;
-    margin-top: 10px;
-    text-align: center;
+.bottom-right-buttons {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px); /* Optional: for a frosted glass effect */
+    -webkit-backdrop-filter: blur(5px); /* For Safari */
+    z-index: 99; /* Ensure it's above other content */
 }
 
-/* Responsive adjustments */
+#backMainPage {
+    /* position: absolute; */ /* Removed */
+    /* bottom: 20px; */ /* Removed */
+    /* right: 20px; */ /* Removed */
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FFFFFF; /* Changed to white */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    z-index: 9999; /* High z-index */
+}
+
+#backMainPage img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#backMainPage:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.bottom-right-buttons {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px); /* Optional: for a frosted glass effect */
+    -webkit-backdrop-filter: blur(5px); /* For Safari */
+    z-index: 99; /* Ensure it's above other content */
+}
+
+.bottom-right-buttons button:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    padding-right: 10px;
+}
+
+/* ======================================== */
+/* 響應式設計 */
+/* ======================================== */
 @media (max-width: 600px) {
     .main-board {
         min-width: unset;
