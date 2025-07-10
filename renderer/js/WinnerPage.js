@@ -74,12 +74,8 @@ document.getElementById('deleteAllBtn').addEventListener('click', function () {
     // 绑定按钮事件
     document.getElementById('ConfirmYes').onclick = function() {
         document.getElementById('Confirm').style.display = 'none';
-        // 这里写你的真正删除逻辑...
-        // deleteAllData();
-
-
-
-fetch('http://localhost:8080/api/deleteAll', {
+        // 删除逻辑
+		fetch('http://localhost:8080/api/deleteAll', {
 				method: 'DELETE'
 			})
 				.then(response => {
@@ -128,5 +124,5 @@ fetch('http://localhost:8080/api/deleteAll', {
    		 bar.style.display = 'block';
     		setTimeout(() => {
        		 bar.style.display = 'none';
-    		}, 3000);
+    		}, 1000);
 }

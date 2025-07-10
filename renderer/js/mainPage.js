@@ -241,5 +241,5 @@ let lotteryNumbers = [];
    		 bar.style.display = 'block';
     		setTimeout(() => {
        		 bar.style.display = 'none';
-    		}, 3000);
+    		}, 1000);
 }

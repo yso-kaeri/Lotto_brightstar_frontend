@@ -150,13 +150,45 @@ document.getElementById('uploadBtn').addEventListener('click', function () {
     });
 });
 
-function deletePrize(prizeName, button) {
-    if (!confirm(`"${prizeName}" を本当に削除しますか？`)) {
-        return;
-    }
 
-    const params = new URLSearchParams();
-    params.append('prizeName', prizeName);
+
+
+// 自定义删除弹框逻辑 
+
+function customConfirm(msg, yesCallback, noCallback) {
+    const mask = document.getElementById('Confirm');
+    const msgDiv = document.getElementById('confirmText');
+    const yesBtn = document.getElementById('ConfirmYes');
+    const noBtn = document.getElementById('ConfirmNo');
+
+    msgDiv.innerHTML = msg;
+    mask.style.display = 'flex';
+
+    // 清理上一次事件
+    yesBtn.onclick = null;
+    noBtn.onclick = null;
+
+    yesBtn.onclick = function () {
+        mask.style.display = 'none';
+        if (yesCallback) yesCallback();
+    };
+    noBtn.onclick = function () {
+        mask.style.display = 'none';
+        if (noCallback) noCallback();
+    };
+}
+
+
+
+
+
+function deletePrize(prizeName, button) {
+    customConfirm(
+        `「${prizeName}」を本当に削除しますか？`,
+        
+        function(){
+             const params = new URLSearchParams();
+             params.append('prizeName', prizeName);
 
     fetch('http://localhost:8080/prize/delete?' + params.toString(), {
         method: 'DELETE',
@@ -174,7 +206,24 @@ function deletePrize(prizeName, button) {
         console.error(error);
         showMsg(`"${prizeName}" の削除に失敗しました`);
     });
+
+    
+        },
+        
+        function(){
+
+        }
+
+    );
+
+
 }
+
+
+
+
+
+
 
 document.getElementById('backMainPage').onclick = function(){
     window.location.href = 'mainPage.html';
@@ -190,6 +239,13 @@ document.getElementById('backMainPage').onclick = function(){
    		 bar.style.display = 'block';
     		setTimeout(() => {
        		 bar.style.display = 'none';
-    		}, 3000);
+    		}, 1000);
 }
+
+
+
+
+
+
+
 
