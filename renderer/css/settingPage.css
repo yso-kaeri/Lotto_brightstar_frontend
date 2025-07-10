@@ -2,12 +2,18 @@
 /* 全体背景：赤白グラデーション背景 */
 /* ======================================== */
 body {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
-    background: linear-gradient(135deg, #a80000 0%, #ffffff 100%);
-}
+     background:
+        linear-gradient(
+            45deg, /* 紅白漸變底色的角度 */
+            #FF0000 0%,
+            #FFFFFF 100%
+        );
+     min-height: 100vh;
+     font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
 
 /* ======================================== */
 /* 包裹容器：白底红影、圆角一致 */
@@ -72,7 +78,7 @@ input[type="text"]:focus, input[type="number"]:focus, input[type="file"]:focus {
 /* ======================================== */
 /* 按钮（红底白字、hover加深） */
 /* ======================================== */
-button, .btn-primary, input[type="button"] {
+.btn-primary, input[type="button"] {
     background: #a80000;
     color: #ffffff;
     font-size: 1rem;
@@ -91,7 +97,52 @@ button:hover, .btn-primary:hover, input[type="button"]:hover {
 }
 
 /* ======================================== */
-/* 表格：白底红字，统一圆角阴影 */
+/* 右下角返回按钮样式 (从 winnersPage.css 复制并调整) */
+/* ======================================== */
+.bottom-right-buttons {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px); /* Optional: for a frosted glass effect */
+    -webkit-backdrop-filter: blur(5px); /* For Safari */
+    z-index: 99; /* Ensure it's above other content */
+}
+
+#backMainPage {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FFFFFF; /* Changed to white */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    z-index: 9999; /* High z-index */
+}
+
+#backMainPage img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#backMainPage:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================================== */
+/* 表格：白底红字、统一圆角阴影 */
 /* ======================================== */
 table {
     width: 100%;
