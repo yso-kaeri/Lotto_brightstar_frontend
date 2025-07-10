@@ -95,7 +95,7 @@ function loadPrizeTable() {
         })
         .catch(err => {
             console.error('賞品リスト取得失敗', err);
-            alert('賞品リスト取得失敗');
+            showMsg('賞品リスト取得失敗');
         });
 }
 
@@ -115,7 +115,7 @@ document.getElementById('uploadBtn').addEventListener('click', function () {
         return response.text();
     })
     .then(() => {
-        alert('アップロード成功！');
+        showMsg('アップロード成功！');
 
         // 上传成功后，前端同步拉取最新奖品列表并更新表格
         fetch('http://localhost:8080/prizes')
@@ -141,12 +141,12 @@ document.getElementById('uploadBtn').addEventListener('click', function () {
             })
             .catch(err => {
                 console.error('賞品リスト更新失敗', err);
-                alert('賞品リスト更新失敗');
+                showMsg('賞品リスト更新失敗');
             });
     })
     .catch(error => {
         console.error(error);
-        alert('アップロード失敗');
+        showMsg('アップロード失敗');
     });
 });
 
@@ -168,15 +168,28 @@ function deletePrize(prizeName, button) {
         // 前端立即从表中移除行
         const tr = button.closest('tr');
         tr.remove();
-        alert(`"${prizeName}" を削除しました！`);
+        showMsg(`"${prizeName}" を削除しました！`);
     })
     .catch(error => {
         console.error(error);
-        alert(`"${prizeName}" の削除に失敗しました`);
+        showMsg(`"${prizeName}" の削除に失敗しました`);
     });
 }
 
 document.getElementById('backMainPage').onclick = function(){
     window.location.href = 'mainPage.html';
 };
+
+
+
+		// 弹窗逻辑js
+	function showMsg(text, color = '#27ae60') {
+    	const bar = document.getElementById('msgBar');
+    	bar.textContent = text;
+    	bar.style.background = color;
+   		 bar.style.display = 'block';
+    		setTimeout(() => {
+       		 bar.style.display = 'none';
+    		}, 3000);
+}
 

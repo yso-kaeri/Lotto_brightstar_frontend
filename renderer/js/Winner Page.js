@@ -38,10 +38,48 @@ fetch('http://localhost:8080/api/winners')
     window.location.href = 'mainPage.html';
 };
 
-document.getElementById('deleteAllBtn').addEventListener('click', function () {
-			if (!confirm("全ての当選者を削除しますか？この操作は復元できない！")) return;
+// document.getElementById('deleteAllBtn').addEventListener('click', function () {
+// 			if (!confirm("全ての当選者を削除しますか？この操作は復元できない！")) return;
 
-			fetch('http://localhost:8080/api/deleteAll', {
+// 			fetch('http://localhost:8080/api/deleteAll', {
+// 				method: 'DELETE'
+// 			})
+// 				.then(response => {
+// 					if (!response.ok) {
+// 						throw new Error("サーバーエラー/当選者データがない");
+// 					}
+// 					return response.text();
+// 				})
+// 				.then(msg => {
+// 					showMsg(msg);
+// 					window.location.reload();
+// 				})
+// 				.catch(err => {
+// 					console.error('エラー:', err);
+// 					showMsg('削除失敗！');
+// 				});
+// 		});
+
+
+
+
+
+
+
+
+document.getElementById('deleteAllBtn').addEventListener('click', function () {
+    // 显示自定义弹窗
+    document.getElementById('Confirm').style.display = 'flex';
+
+    // 绑定按钮事件
+    document.getElementById('ConfirmYes').onclick = function() {
+        document.getElementById('Confirm').style.display = 'none';
+        // 这里写你的真正删除逻辑...
+        // deleteAllData();
+
+
+
+fetch('http://localhost:8080/api/deleteAll', {
 				method: 'DELETE'
 			})
 				.then(response => {
@@ -51,11 +89,44 @@ document.getElementById('deleteAllBtn').addEventListener('click', function () {
 					return response.text();
 				})
 				.then(msg => {
-					alert(msg);
+					
 					window.location.reload();
+					// showMsg(msg);
 				})
 				.catch(err => {
 					console.error('エラー:', err);
-					alert('削除失敗！');
+					showMsg('削除失敗！');
 				});
-		});
+
+    };
+    document.getElementById('ConfirmNo').onclick = function() {
+        document.getElementById('Confirm').style.display = 'none';
+    };
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// 弹窗逻辑js
+	function showMsg(text, color = '#27ae60') {
+    	const bar = document.getElementById('msgBar');
+    	bar.textContent = text;
+    	bar.style.background = color;
+   		 bar.style.display = 'block';
+    		setTimeout(() => {
+       		 bar.style.display = 'none';
+    		}, 3000);
+}

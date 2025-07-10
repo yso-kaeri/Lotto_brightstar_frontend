@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="../css/winnersPage.css">
 </head>
 <body class="">
+
+  	<!-- 弹窗显示 -->
+					<div id="msgBar" class="msgBar" ></div>
   <div class="main-board">
     <h2>当選者リスト</h2>
     <div class="table-responsive">
@@ -29,6 +32,24 @@
     <img src="../img/home.jpg" alt="主頁">
   </button>
   </div>
+
+<!-- 自定义确认弹窗  有选择按钮的-->
+<div id="Confirm" class="Confirm" >
+  <div class="confirmContent" >
+    <div class="confirmText" >全ての当選者を削除しますか？この操作は復元できない！</div>
+    <button id="ConfirmYes" class="btn btn-danger" style="margin-right:16px;">削除</button>
+    <button id="ConfirmNo" class="btn btn-secondary">キャンセル</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
   <script src="../js/Winner Page.js"></script>
 </body>
 </html>

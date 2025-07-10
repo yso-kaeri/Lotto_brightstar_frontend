@@ -16,7 +16,7 @@ let lotteryNumbers = [];
 				.then(result => {
 					// result 是对象：{ winners: [...] }
 					if (!result.winners || !Array.isArray(result.winners)) {
-						alert('后端返回中奖号码格式异常！');
+						showMsg('后端返回中奖号码格式异常！');
 						console.error('后端返回:', result);
 						return;
 					}
@@ -29,7 +29,7 @@ let lotteryNumbers = [];
 
 				})
 				.catch(err => {
-					alert("抽奖失败，请稍后再试！");
+					showMsg("抽奖失败，请稍后再试！");
 					console.error(err);
 				});
 		};
@@ -219,7 +219,7 @@ let lotteryNumbers = [];
 					console.log('参加人数：', inputVal);
 					participantModal.style.display = 'none';
 				} else {
-					alert('有効な数字を入力してください');
+					showMsg('有効な数字を入力してください');
 				}
 			});
 
@@ -229,3 +229,17 @@ let lotteryNumbers = [];
 				}
 			});
             });
+
+
+
+
+			// 弹窗逻辑js
+	function showMsg(text, color = '#27ae60') {
+    	const bar = document.getElementById('msgBar');
+    	bar.textContent = text;
+    	bar.style.background = color;
+   		 bar.style.display = 'block';
+    		setTimeout(() => {
+       		 bar.style.display = 'none';
+    		}, 3000);
+}

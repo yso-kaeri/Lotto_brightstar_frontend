@@ -2,10 +2,10 @@
 <html xmlns="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>抽選システム</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="../css/mainPage.css">
+	<meta charset="UTF-8" />
+	<title>抽選システム</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../css/mainPage.css">
 </head>
 
 <body>
@@ -45,53 +45,59 @@
 
 
 
-					<button class="prize-arrow-btn" id="arrowRight" title="下一奖品">
-						<svg viewBox="0 0 24 24" width="22" height="22">
-							<polyline points="9,4 17,12 9,20" fill="none" stroke="#e99809" stroke-width="4"
-								stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</button>
+
+
+						<button class="prize-arrow-btn" id="arrowRight" title="下一奖品">
+							<svg viewBox="0 0 24 24" width="22" height="22">
+								<polyline points="9,4 17,12 9,20" fill="none" stroke="#e99809" stroke-width="4"
+									stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</button>
+
+
+						<!-- 弹窗显示 -->
+					<div id="msgBar" class="msgBar" ></div>
+					</div>
 				</div>
 			</div>
+
+			<!-- Bottom right buttons container -->
+			<div class="bottom-right-buttons">
+				<!-- 当選者一覧ページ推移のボタン -->
+				<button class="winner-button" id="winner-button" title="履歴"><svg xmlns="http://www.w3.org/2000/svg"
+						width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+						stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+						<line x1="8" y1="6" x2="21" y2="6"></line>
+						<line x1="8" y1="12" x2="21" y2="12"></line>
+						<line x1="8" y1="18" x2="21" y2="18"></line>
+						<line x1="3" y1="6" x2="3.01" y2="6"></line>
+						<line x1="3" y1="12" x2="3.01" y2="12"></line>
+						<line x1="3" y1="18" x2="3.01" y2="18"></line>
+					</svg></button>
+
+				<!-- 設定画面推移のボタン -->
+				<button class="setting-button" id="setting-button" title="設定">⚙</button>
+
+				<!-- 新增：选择抽奖人数按钮 -->
+				<div style="margin-bottom: 10px;">
+					<label for="totalInput">總參加人數：</label>
+					<input type="number" id="totalInput" placeholder="請輸入總人數" min="1" />
+				</div>
+			</div>
+			<!-- <script src="../js/jquery.min.js"></script> -->
+
 		</div>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script src="../js/mainPage.js"></script>
 
-		<!-- Bottom right buttons container -->
-		<div class="bottom-right-buttons">
-			<!-- 当選者一覧ページ推移のボタン -->
-			<button class="winner-button" id="winner-button" title="履歴"><svg xmlns="http://www.w3.org/2000/svg"
-					width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-					stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
-					<line x1="8" y1="6" x2="21" y2="6"></line>
-					<line x1="8" y1="12" x2="21" y2="12"></line>
-					<line x1="8" y1="18" x2="21" y2="18"></line>
-					<line x1="3" y1="6" x2="3.01" y2="6"></line>
-					<line x1="3" y1="12" x2="3.01" y2="12"></line>
-					<line x1="3" y1="18" x2="3.01" y2="18"></line>
-				</svg></button>
-
-			<!-- 設定画面推移のボタン -->
-			<button class="setting-button" id="setting-button" title="設定">⚙</button>
-
-			<!-- 新增：选择抽奖人数按钮 -->
-			<div style="margin-bottom: 10px;">
-				<label for="totalInput">總參加人數：</label>
-				<input type="number" id="totalInput" placeholder="請輸入總人數" min="1" />
+		<div id="participantModal" class="modal">
+			<div class="modal-content">
+				<span id="modalClose" class="modal-close">&times;</span>
+				<h3>参加人数設定</h3>
+				<input type="number" id="participantInput" placeholder="参加人数を入力" />
+				<button id="participantConfirmBtn">決定</button>
 			</div>
 		</div>
-		<!-- <script src="../js/jquery.min.js"></script> -->
-
-	</div>
-	<script src="../js/jquery-3.4.1.min.js"></script>
-	<script src="../js/mainPage.js"></script>
-
-	<div id="participantModal" class="modal">
-		<div class="modal-content">
-			<span id="modalClose" class="modal-close">&times;</span>
-			<h3>参加人数設定</h3>
-			<input type="number" id="participantInput" placeholder="参加人数を入力" />
-			<button id="participantConfirmBtn">決定</button>
-		</div>
-	</div>
 
 </body>
 
