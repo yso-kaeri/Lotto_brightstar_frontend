@@ -339,7 +339,18 @@
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-
+#participantModal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease-out;
+}
 .participant-button {
      z-index: 99;
      font-size: 32px; /* Re-added */
@@ -373,20 +384,53 @@
 }
 
 .modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 32px;
+  max-width: 320px;
+  width: 90%;
+  margin: 10% auto;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  animation: slideUp 0.3s ease-out;
+  position: relative;
   text-align: center;
 }
-
+/* 输入框美化 */
+.modal-content input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.modal-content input[type="number"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
+  outline: none;
+}
 .modal-close {
-  float: right;
+  position: absolute;
+  right: 12px;
+  top: 12px;
   font-size: 20px;
   cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
 }
-
+#modalClose:hover {
+  color: #333;
+}
+/* 动画 */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes slideUp {
+  from {transform: translateY(20px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
 .bottom-right-buttons {
     position: fixed;
     bottom: 20px; /* Adjust as needed */

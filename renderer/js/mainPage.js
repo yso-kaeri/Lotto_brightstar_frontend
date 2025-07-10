@@ -1,38 +1,111 @@
 // ========== 左侧开奖逻辑 ==========
-let lotteryNumbers = [];
-		document.getElementById('btnStart').onclick = function () {
-			const prize = prizes[curIdx];
-			const totalInput = document.getElementById("totalInput").value.trim();
-			fetch('http://localhost:8080/api/draw', {
-				method: 'POST',
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify({
-					prizeName: prize.prizeName,
-					participantCount: totalInput
+// let lotteryNumbers = [];
+// 		document.getElementById('btnStart').onclick = function () {
+// 			const prize = prizes[curIdx];
+// 			const totalInput = document.getElementById("totalInput").value.trim();
+// 			fetch('http://localhost:8080/api/draw', {
+// 				method: 'POST',
+// 				headers: {'Content-Type': 'application/json'},
+// 				body: JSON.stringify({
+// 					prizeName: prize.prizeName,
+// 					participantCount: totalInput
 
-				})
-			})
-				.then(res => res.json())
-				.then(result => {
-					// result 是对象：{ winners: [...] }
-					if (!result.winners || !Array.isArray(result.winners)) {
-						showMsg('后端返回中奖号码格式异常！');
-						console.error('后端返回:', result);
-						return;
-					}
-					lotteryNumbers = result.winners;  // 这里是数组了
-					document.getElementById('lastPrizeQuantity').textContent = '剩余：' + result.lastPrizeQuantity + ' 名';
-					renderNumbers();
+// 				})
+// 			})
+// 				.then(res => res.json())
+// 				.then(result => {
+// 					// result 是对象：{ winners: [...] }
+// 					if (!result.winners || !Array.isArray(result.winners)) {
+// 						showMsg('后端返回中奖号码格式异常！');
+// 						console.error('后端返回:', result);
+// 						return;
+// 					}
+// 					lotteryNumbers = result.winners;  // 这里是数组了
+// 					document.getElementById('lastPrizeQuantity').textContent = '剩余：' + result.lastPrizeQuantity + ' 名';
+// 					renderNumbers();
 
-					startLotteryAnimation()
+// 					startLotteryAnimation()
 
 
-				})
-				.catch(err => {
-					showMsg("抽奖失败，请稍后再试！");
-					console.error(err);
-				});
-		};
+// 				})
+// 				.catch(err => {
+// 					showMsg("抽奖失败，请稍后再试！");
+// 					console.error(err);
+// 				});
+// 		};
+// 全局变量存人数
+let participantCount = null;
+
+// 页面加载完后绑定事件
+document.addEventListener('DOMContentLoaded', function () {
+  // Modal 元素
+  const modal = document.getElementById('participantModal');
+  const inputEl = document.getElementById('totalInput');
+  const btnOpen = document.getElementById('setParticipantButton');
+  const btnClose = document.getElementById('modalClose');
+  const btnConfirm = document.getElementById('participantConfirmBtn');
+
+  // 打开 modal
+  btnOpen.addEventListener('click', () => {
+    modal.style.display = 'block';
+    inputEl.value = '';
+    inputEl.focus();
+  });
+
+  // 点击 × 关闭
+  btnClose.addEventListener('click', () => modal.style.display = 'none');
+
+  // 点击空白处关闭
+  window.addEventListener('click', e => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+
+  // 确定按钮：保存人数并关闭
+  btnConfirm.addEventListener('click', () => {
+    const v = parseInt(inputEl.value.trim(), 10);
+    if (!isNaN(v) && v > 0) {
+      participantCount = v;
+      modal.style.display = 'none';
+    } else {
+      alert('请输入有效的总人数');
+    }
+  });
+
+  // “开始开奖”按钮
+  document.getElementById('btnStart').addEventListener('click', () => {
+    if (participantCount == null) {
+      alert('请先设置总参加人数');
+      return;
+    }
+    const prize = prizes[curIdx];
+    fetch('http://localhost:8080/api/draw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        prizeName: prize.prizeName,
+        participantCount: participantCount.toString()
+      })
+    })
+    .then(res => res.json())
+    .then(result => {
+      if (!Array.isArray(result.winners)) {
+        console.error('后端返回异常', result);
+        alert('后端返回数据异常');
+        return;
+      }
+      // 更新抽奖结果...
+      lotteryNumbers = result.winners;
+      document.getElementById('lastPrizeQuantity')
+        .textContent = '剩余：' + result.lastPrizeQuantity + ' 名';
+      renderNumbers();
+      startLotteryAnimation();
+    })
+    .catch(err => {
+      console.error(err);
+      alert('抽奖请求失败');
+    });
+  });
+});
 
 
 
