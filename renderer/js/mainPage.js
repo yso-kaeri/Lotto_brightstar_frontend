@@ -289,6 +289,7 @@ const prizeName = prize.prizeName;
 
 			winnerList.innerHTML = ''; 
 			numberRow.innerHTML='';
+			lastPrizeQuantity.innerHTML='';
 		};
 		document.getElementById('arrowRight').onclick = function () {
 			curIdx = (curIdx + 1) % prizes.length;
@@ -297,6 +298,7 @@ const prizeName = prize.prizeName;
 
 			winnerList.innerHTML = ''; 
 			numberRow.innerHTML='';
+			lastPrizeQuantity.innerHTML='';
 		};
 
 
