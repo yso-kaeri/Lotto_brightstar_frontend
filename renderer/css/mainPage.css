@@ -527,18 +527,33 @@
     gap: 10px;
 }
 .window-btn {
-    width: 32px;
-    height: 32px;
-    background: rgba(0,0,0,0.18);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-    padding: 0;
+   
+   width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.4); /* 玻璃高光边缘 */
+  box-shadow: 0 2px 6px rgba(40,201,64,0.18), 0 4px 16px rgba(0,0,0,0.06);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: background 0.2s, box-shadow 0.2s;
+
+
+
 }
+.window-btn:active,
 .window-btn:hover {
-    background: #e99809;
+    transform: translateY(-4px) scale(1.05);   /* 上浮并微微放大 */
+  box-shadow: 0 8px 24px rgba(40,201,64,0.20), 0 4px 24px rgba(0,0,0,0.08);
+
+}
+
+.btn-red{
+    background-color: rgb(255, 87, 87);
+}
+.btn-green{
+    background-color:#fad660;
 }
