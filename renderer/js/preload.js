@@ -5,5 +5,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     deletePrize: (prizeName) => ipcRenderer.send('delete-prize', prizeName),
     getPrizes: () => ipcRenderer.send('get-prizes'),
     onUpdatePrizesReply: (callback) => ipcRenderer.on('update-prizes-reply', callback),
-    onUploadError: (callback) => ipcRenderer.on('upload-error', callback)
+    onUploadError: (callback) => ipcRenderer.on('upload-error', callback),
+    minimize: () => ipcRenderer.send('window-minimize'),
+    close: () => ipcRenderer.send('window-close')
 });

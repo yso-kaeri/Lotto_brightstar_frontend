@@ -463,3 +463,10 @@ function enableAllButtons() {
 	const btns = document.querySelectorAll('button');
 	btns.forEach(btn => btn.disabled = false);
 }
+
+document.getElementById('minBtn').onclick = function () {
+    window.electronAPI.minimize();
+};
+document.getElementById('closeBtn').onclick = function () {
+    window.electronAPI.close();
+};

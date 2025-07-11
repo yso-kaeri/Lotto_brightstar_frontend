@@ -518,3 +518,27 @@
     scrollbar-color: #ffd374 #fff;
 }
 
+.window-control-bar {
+    position: fixed;
+    top: 16px;
+    right: 32px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+.window-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(0,0,0,0.18);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    padding: 0;
+}
+.window-btn:hover {
+    background: #e99809;
+}
