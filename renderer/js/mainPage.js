@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			localStorage.setItem('participantCount', v);
 			modal.style.display = 'none';
 		} else {
-			alert('请输入有效的总人数');
+			showMsg('参加する総人数を設定してください');
 		}
 	});
 
@@ -108,8 +108,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			.then(res => res.json())
 			.then(result => {
 				if (!Array.isArray(result.winners)) {
-					console.error('后端返回异常', result);
-					alert('后端返回数据异常');
+					console.error('バックエンド返却異常', result);
+					showMsg('異常が発生しました');
 					return;
 				}
 
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				// 更新抽奖结果...
 				lotteryNumbers = result.winners;
 				document.getElementById('lastPrizeQuantity')
-					.textContent = '剩余：' + result.lastPrizeQuantity + ' 名';
+					.textContent = '残り：' + result.lastPrizeQuantity + ' 名';
 				renderNumbers();
 				startLotteryAnimation(() => {
 					enableAllButtons();
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			})
 			.catch(err => {
 				console.error(err);
-				alert('抽奖请求失败');
+				showMsg('抽選の請求が異常になりました');
 			});
 
 	});
@@ -190,7 +190,7 @@ function startLotteryAnimation(done) {
 		if (i >= slots.length) {
 			showWinnerNumbers();
 			document.getElementById('btnStart').disabled = false;
-			if (done) done(); // <-- 只有在这里执行回调
+			if (done) done(); // 执行回调
 
 			return;
 		}
@@ -306,7 +306,7 @@ function showPrize(idx) {
 	const prize = prizes[idx];
 	document.getElementById('prizeTitle').textContent = prize.prizeName;
 	document.getElementById('awardName').textContent = prize.prizeName;
-	document.getElementById('prizeQty').textContent = '总共：' + prize.quantity + ' 名';
+	document.getElementById('prizeQty').textContent = '当選枠：' + prize.quantity + ' 名';
 
 
 

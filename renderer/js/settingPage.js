@@ -184,7 +184,7 @@ function customConfirm(msg, yesCallback, noCallback) {
 
 function deletePrize(prizeName, button) {
     customConfirm(
-        `「${prizeName}」を本当に削除しますか？`,
+        `「${prizeName}」を削除しますか？`,
         
         function(){
              const params = new URLSearchParams();
