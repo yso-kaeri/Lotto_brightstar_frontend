@@ -492,5 +492,29 @@
 
 }
 
+/* winner-list 滚动条默认隐藏，悬停时显示 */
+.winner-list::-webkit-scrollbar {
+    height: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.winner-list:hover::-webkit-scrollbar,
+.winner-list:focus::-webkit-scrollbar,
+.winner-list:active::-webkit-scrollbar,
+.winner-list .winner-ball:hover::-webkit-scrollbar {
+    opacity: 1;
+}
 
+
+.winner-list {
+    scrollbar-width: none;
+    transition: scrollbar-color 0.3s;
+}
+.winner-list:hover,
+.winner-list:focus,
+.winner-list:active,
+.winner-list .winner-ball:hover {
+    scrollbar-width: thin;
+    scrollbar-color: #ffd374 #fff;
+}
 

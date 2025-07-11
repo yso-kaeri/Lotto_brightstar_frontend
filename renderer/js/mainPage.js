@@ -212,7 +212,33 @@ const prizeName = prize.prizeName;
 							`<span class="winner-ball">${pad3(num)}</span>`
 						).join('');
 						winnerList.style.display = 'flex';
+
+						// 自动滚动逻辑（平滑动画，渲染后执行）
+							if (shown.length > 5) {
+								startWinnerListMarquee();
+							} else {
+								stopWinnerListMarquee();
+								winnerList.scrollLeft = 0;
+							}
 					}
+						// 在切换奖品时也要停止滚动
+						document.getElementById('arrowLeft').onclick = function () {
+							curIdx = (curIdx - 1 + prizes.length) % prizes.length;
+							showPrize(curIdx);
+							winnerList.innerHTML = '';
+							numberRow.innerHTML = '';
+							lastPrizeQuantity.innerHTML = '';
+							stopWinnerListMarquee();
+						};
+						document.getElementById('arrowRight').onclick = function () {
+							curIdx = (curIdx + 1) % prizes.length;
+							showPrize(curIdx);
+							winnerList.innerHTML = '';
+							numberRow.innerHTML = '';
+							lastPrizeQuantity.innerHTML = '';
+							stopWinnerListMarquee();
+						};
+
 					// 停下后随机等待1~2秒
 					const delay = 1000 + Math.random() * 1000;
 					setTimeout(() => {
@@ -314,12 +340,18 @@ const prizeName = prize.prizeName;
          function showWinnerNumbers() {
 			const prizeName = prizes[curIdx].prizeName;
 			const allWinners = winnersMap[prizeName] || [];
-
 			const winnerList = document.getElementById('winnerList');
 			winnerList.innerHTML = allWinners.map(n =>
 				`<span class="winner-ball">${pad3(n)}</span>`
 			).join('');
 			winnerList.style.display = 'flex';
+				// 自动滚动逻辑（平滑动画，渲染后执行）
+				if (allWinners.length > 5) {
+					startWinnerListMarquee();
+				} else {
+					stopWinnerListMarquee();
+					winnerList.scrollLeft = 0;
+				}
 		}
 
 		document.getElementById('setting-button').addEventListener('click', function () {
@@ -364,10 +396,7 @@ const prizeName = prize.prizeName;
 			});
             });
 
-
-
-
-			// 弹窗逻辑js
+	// 弹窗逻辑js
 	function showMsg(text, color = '#27ae60') {
     	const bar = document.getElementById('msgBar');
     	bar.textContent = text;
@@ -376,4 +405,37 @@ const prizeName = prize.prizeName;
     		setTimeout(() => {
        		 bar.style.display = 'none';
     		}, 1000);
+}
+
+// 自动滚动
+let winnerListScrollTimer = null;
+
+function startWinnerListMarquee() {
+    const winnerList = document.getElementById('winnerList');
+    if (!winnerList) return;
+    stopWinnerListMarquee(); // 防止重复定时器
+
+    const scrollStep = 0.5; // 每次滚动的像素
+    const interval = 170; // 滚动间隔，越小越快
+
+    function scroll() {
+
+        if (winnerList.scrollWidth <= winnerList.clientWidth + 2) return;
+
+        // 到达最右侧后，回到最左
+        if (winnerList.scrollLeft + winnerList.clientWidth >= winnerList.scrollWidth - 1) {
+            winnerList.scrollLeft = 0;
+        } else {
+            winnerList.scrollLeft += scrollStep;
+        }
+    }
+
+    winnerListScrollTimer = setInterval(scroll, interval);
+}
+
+function stopWinnerListMarquee() {
+    if (winnerListScrollTimer) {
+        clearInterval(winnerListScrollTimer);
+        winnerListScrollTimer = null;
+    }
 }
