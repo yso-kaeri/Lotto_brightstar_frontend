@@ -85,6 +85,7 @@ table {
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     background: #FFFFFF; /* White background for table */
+    min-width: 520px;
 }
 
 th, td {
@@ -254,5 +255,16 @@ tr:last-child td {
 }
 
 /* 以上です */
+
+
+#winnerTbody tr {
+    white-space: nowrap;
+}
+
+#winnerTbody td {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 1.08rem;
+}
 
 
