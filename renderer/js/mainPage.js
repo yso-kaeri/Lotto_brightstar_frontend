@@ -423,8 +423,8 @@ function startWinnerListMarquee() {
 	if (!winnerList) return;
 	stopWinnerListMarquee(); // 防止重复定时器
 
-	const scrollStep = 0.5; // 每次滚动的像素
-	const interval = 170; // 滚动间隔，越小越快
+	const scrollStep = 1.5; // 每次滚动的像素
+	const interval = 50; // 滚动间隔，越小越快
 
 // 	function scroll() {
 
