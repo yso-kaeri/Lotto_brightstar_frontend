@@ -561,17 +561,29 @@
 }
 
 .window-control-bar {
-    position: fixed;
-    top: 16px;
-    right: 32px;
-    z-index: 1000;
-    display: flex;
-    gap: 10px;
+  height: 45px;
+ width: 70px;
+ background-color: rgba(255,255,255,0.18);;
+
+ position: fixed;
+ top: 16px;
+ right: 32px;
+ z-index: 1000;
+ display: flex;
+ gap: 5px;
+ align-items: center; 
+ justify-content: center;
+ border: 1.5px solid rgba(255,255,255,0.5);
+ border-radius: 16px; 
+box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+backdrop-filter: blur(8px); 
+-webkit-backdrop-filter: blur(8px);
+
 }
 .window-btn {
    
-   width: 30px;
-  height: 30px;
+   width: 25px;
+  height: 25px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.4); /* 玻璃高光边缘 */
   box-shadow: 0 2px 6px rgba(40,201,64,0.18), 0 4px 16px rgba(0,0,0,0.06);
