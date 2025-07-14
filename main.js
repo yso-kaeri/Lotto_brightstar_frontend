@@ -30,9 +30,10 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+    backendProcess = spawn(javaCmd, ['-jar', jarPath], { cwd: resourceDir });
     // 啟動 jar，存下 process 物件
     backendProcess = spawn('java', ['-jar', './Lotto_brightstar-0.0.1-SNAPSHOT.jar'], { cwd: __dirname });
-
+    
     // 印出後台訊息（方便 debug）
     backendProcess.stdout.on('data', (data) => console.log(`[backend] ${data}`));
     backendProcess.stderr.on('data', (data) => console.error(`[backend-err] ${data}`));

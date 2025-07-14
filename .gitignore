@@ -139,3 +139,6 @@ main.js
 MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/lottery-db.mv.db
 MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/lottery-db.trace.db
 MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/Lotto_brightstar-0.0.1-SNAPSHOT.jar
+MyLottoApp-darwin-x64/resource/lottery-db.mv.db
+MyLottoApp-darwin-x64/resource/lottery-db.trace.db
+MyLottoApp-darwin-x64/resource/Lotto_brightstar-0.0.1-SNAPSHOT.jar
