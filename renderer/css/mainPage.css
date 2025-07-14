@@ -558,7 +558,7 @@ mask-image: linear-gradient(to right,
 
 .window-control-bar {
   height: 45px;
- width: 70px;
+ width: 50px;
  background-color: rgba(255,255,255,0.18);;
 
  position: fixed;
@@ -605,5 +605,5 @@ backdrop-filter: blur(8px);
     background-color: rgb(255, 87, 87);
 }
 .btn-green{
-    background-color:#fad660;
+    background-color:#fce084;
 }

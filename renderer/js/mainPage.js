@@ -352,8 +352,8 @@ function startWinnerListMarquee() {
 	if (!winnerList) return;
 	stopWinnerListMarquee(); // 防止重复定时器
 
-	const scrollStep = 0.5; // 每次滚动的像素
-	const interval = 170; // 滚动间隔，越小越快
+	const scrollStep = 1.5; // 每次滚动的像素
+	const interval = 50; // 滚动间隔，越小越快
 
 	let direction = 1; // 1往右，-1往左
 			//新增左右滾動判斷
@@ -393,9 +393,9 @@ function enableAllButtons() {
 	btns.forEach(btn => btn.disabled = false);
 }
 
-document.getElementById('minBtn').onclick = function () {
-    window.electronAPI.minimize();
-};
+// document.getElementById('minBtn').onclick = function () {
+//     window.electronAPI.minimize();
+// };
 document.getElementById('closeBtn').onclick = function () {
     window.electronAPI.close();
 };

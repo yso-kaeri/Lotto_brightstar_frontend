@@ -15,7 +15,7 @@ fetch('http://localhost:8080/api/winners')
 				Object.keys(groupPrize).forEach(prize => {
 					html += `<tr class="table-primary"><td colspan="10"><strong>${prize}</strong></td></tr>`;
 					const winnersArr = groupPrize[prize];
-					const maxPerRow = 8;
+					const maxPerRow = 10;
 
 					for (let i = 0; i < winnersArr.length; i += maxPerRow) {
 						html += '<tr>';
