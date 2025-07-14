@@ -2,3 +2,140 @@ node_modules/
 dist/
 .DS_Store
 *.log
+MyLottoApp-darwin-x64/LICENSE
+MyLottoApp-darwin-x64/LICENSES.chromium.html
+MyLottoApp-darwin-x64/version
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/PkgInfo
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Electron Framework
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Helpers
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Libraries
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Resources
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/Current
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Helpers/chrome_crashpad_handler
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libEGL.dylib
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libGLESv2.dylib
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libvk_swiftshader.dylib
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/vk_swiftshader_icd.json
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/chrome_100_percent.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/chrome_200_percent.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/icudtl.dat
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/MainMenu.nib
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/resources.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/af.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/am.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ar.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bg.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bn.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ca.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/cs.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/da.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/de.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/el.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en_GB.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es_419.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/et.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fa.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fi.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fil.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fr.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/gu.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/he.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hi.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hr.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hu.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/id.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/it.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ja.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/kn.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ko.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lt.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lv.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ml.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/mr.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ms.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nb.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nl.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pl.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_BR.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_PT.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ro.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ru.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sk.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sl.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sr.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sv.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sw.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ta.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/te.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/th.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/tr.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/uk.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ur.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/vi.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_CN.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_TW.lproj/locale.pak
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Mantle.framework/Mantle
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Mantle.framework/Resources
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Mantle.framework/Versions/Current
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Mantle.framework/Versions/A/Mantle
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Mantle.framework/Versions/A/Resources/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (GPU).app/Contents/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (GPU).app/Contents/PkgInfo
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (GPU).app/Contents/MacOS/MyLottoApp Helper (GPU)
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (Plugin).app/Contents/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (Plugin).app/Contents/PkgInfo
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (Plugin).app/Contents/MacOS/MyLottoApp Helper (Plugin)
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (Renderer).app/Contents/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (Renderer).app/Contents/PkgInfo
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper (Renderer).app/Contents/MacOS/MyLottoApp Helper (Renderer)
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper.app/Contents/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper.app/Contents/PkgInfo
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/MyLottoApp Helper.app/Contents/MacOS/MyLottoApp Helper
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/ReactiveObjC.framework/ReactiveObjC
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/ReactiveObjC.framework/Resources
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/ReactiveObjC.framework/Versions/A/ReactiveObjC
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/ReactiveObjC.framework/Versions/A/Resources/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Squirrel.framework/Resources
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Squirrel.framework/Squirrel
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Squirrel.framework/Versions/Current
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Squirrel.framework/Versions/A/Squirrel
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Squirrel.framework/Versions/A/Resources/Info.plist
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Frameworks/Squirrel.framework/Versions/A/Resources/ShipIt
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/MacOS/MyLottoApp
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/electron.icns
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/.gitignore
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/main.js
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/package.json
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/.idea/.gitignore
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/.idea/Lotto_brightstar_frontend.iml
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/.idea/misc.xml
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/.idea/modules.xml
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/.idea/vcs.xml
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/css/mainPage.css
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/css/settingPage.css
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/css/winnersPage.css
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/html/mainPage.html
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/html/settingPage.html
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/html/winnersPage.html
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/img/home.jpg
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/img/会社Logo.png
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/js/jquery-3.4.1.min.js
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/js/mainPage.js
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/js/preload.js
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/js/settingPage.js
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/renderer/js/WinnerPage.js
+MyLottoApp-darwin-x64/lottery-db.mv.db
+MyLottoApp-darwin-x64/lottery-db.trace.db
+MyLottoApp-darwin-x64/Lotto_brightstar-0.0.1-SNAPSHOT.jar
+main.js
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/lottery-db.mv.db
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/lottery-db.trace.db
+MyLottoApp-darwin-x64/MyLottoApp.app/Contents/Resources/app/Lotto_brightstar-0.0.1-SNAPSHOT.jar
