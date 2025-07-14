@@ -1,7 +1,4 @@
-// 開啟時啟動後端jar
-const { exec } = require('child_process');
-exec('java -jar ./Lotto_brightstar-0.0.1-SNAPSHOT.jar', { cwd: __dirname });
-
+const { spawn } = require('child_process');
 // // 用于像浏览器一样开发的时候刷新 20250707kos
 // require('electron-reload')(__dirname, {
 //     electron: require(`${__dirname}/node_modules/electron`)
@@ -11,6 +8,8 @@ exec('java -jar ./Lotto_brightstar-0.0.1-SNAPSHOT.jar', { cwd: __dirname });
 // const path = require('path');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+
+let backendProcess = null;
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -30,4 +29,24 @@ function createWindow() {
     ipcMain.on('window-close', () => win.close());
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+    // 啟動 jar，存下 process 物件
+    backendProcess = spawn('java', ['-jar', './Lotto_brightstar-0.0.1-SNAPSHOT.jar'], { cwd: __dirname });
+
+    // 印出後台訊息（方便 debug）
+    backendProcess.stdout.on('data', (data) => console.log(`[backend] ${data}`));
+    backendProcess.stderr.on('data', (data) => console.error(`[backend-err] ${data}`));
+
+    createWindow();
+});
+
+app.on('before-quit', () => {
+    if (backendProcess) {
+        backendProcess.kill('SIGTERM');
+    }
+});
+
+app.on('window-all-closed', () => {
+    if (backendProcess) backendProcess.kill('SIGTERM');
+    app.quit();
+});
