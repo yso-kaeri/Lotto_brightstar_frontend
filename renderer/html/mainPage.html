@@ -28,10 +28,13 @@
 	</div>
 	<div class="main-board-wrapper">
 
+
 		<img class="logo" src="../img/会社Logo.png" alt="会社logo" />
 
 		<div class="main-board">
+
 			<!-- 左开奖数字滚轮区 -->
+             <canvas id="leftPanelEffect" class="left-panel-effect"></canvas>
 			<div class="left-panel">
 
 				<div class="period-info" id="periodInfo">忘年会抽選システム</div>
@@ -50,7 +53,6 @@
 				<div class="prize-img-title" id="prizeTitle"></div>
 				<div class="prize-img-title" id="prizeQty"></div>
 				<div class="prize-img-title" id="lastPrizeQuantity"></div>
-				<!-- <div class="prize-img-title" id="prizeTitle2"></div> -->
 				<div class="prize-btn-row">
 					<button class="prize-arrow-btn" id="arrowLeft" title="前の賞">
 						<svg viewBox="0 0 24 24" width="22" height="22">
@@ -60,11 +62,7 @@
 					</button>
 					<button class="btn-start" id="btnStart">抽選開始</button>
 
-
-
-
-
-						<button class="prize-arrow-btn" id="arrowRight" title="次の賞">
+				 <button class="prize-arrow-btn" id="arrowRight" title="次の賞">
 							<svg viewBox="0 0 24 24" width="22" height="22">
 								<polyline points="9,4 17,12 9,20" fill="none" stroke="#e99809" stroke-width="4"
 									stroke-linecap="round" stroke-linejoin="round" />
@@ -99,28 +97,11 @@
 						<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
 					</svg>
 				</button>
-
-				<!-- 新增：选择抽奖人数按钮 -->
-				<!-- <div style="margin-bottom: 10px;">
-					<label for="totalInput">總參加人數：</label>
-					<input type="number" id="totalInput" placeholder="請輸入總人數" min="1" />
-				</div> -->
 			</div>
-			<!-- <script src="../js/jquery.min.js"></script> -->
 
 		</div>
 		<script src="../js/jquery-3.4.1.min.js"></script>
 		<script src="../js/mainPage.js"></script>
-
-		<!-- <div id="participantModal" class="modal">
-			<div class="modal-content">
-				<span id="modalClose" class="modal-close">&times;</span>
-				<h3>参加人数設定</h3>
-				<input type="number" id="participantInput" placeholder="参加人数を入力" />
-				<button id="participantConfirmBtn">決定</button>
-			</div>
-		</div> -->
-
 			<div id="participantModal" class="modal">
 			<div class="modal-content">
 				<span id="modalClose" class="modal-close">&times;</span>

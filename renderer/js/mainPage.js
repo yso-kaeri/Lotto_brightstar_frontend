@@ -1,44 +1,7 @@
-// ========== 左侧开奖逻辑 ==========
-// let lotteryNumbers = [];
-// 		document.getElementById('btnStart').onclick = function () {
-// 			const prize = prizes[curIdx];
-// 			const totalInput = document.getElementById("totalInput").value.trim();
-// 			fetch('http://localhost:8080/api/draw', {
-// 				method: 'POST',
-// 				headers: {'Content-Type': 'application/json'},
-// 				body: JSON.stringify({
-// 					prizeName: prize.prizeName,
-// 					participantCount: totalInput
 
-// 				})
-// 			})
-// 				.then(res => res.json())
-// 				.then(result => {
-// 					// result 是对象：{ winners: [...] }
-// 					if (!result.winners || !Array.isArray(result.winners)) {
-// 						showMsg('后端返回中奖号码格式异常！');
-// 						console.error('后端返回:', result);
-// 						return;
-// 					}
-// 					lotteryNumbers = result.winners;  // 这里是数组了
-// 					document.getElementById('lastPrizeQuantity').textContent = '剩余：' + result.lastPrizeQuantity + ' 名';
-// 					renderNumbers();
-
-// 					startLotteryAnimation()
-
-
-// 				})
-// 				.catch(err => {
-// 					showMsg("抽奖失败，请稍后再试！");
-// 					console.error(err);
-// 				});
-// 		};
 // 全局变量存人数
 let participantCount = null;
-
-//改
 const winnersMap = {};
-
 
 // 页面加载完后绑定事件
 document.addEventListener('DOMContentLoaded', function () {
@@ -94,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			return;
 		}
 		const prize = prizes[curIdx];
-		//改
 		const prizeName = prize.prizeName;
 		fetch('http://localhost:8080/api/draw', {
 			method: 'POST',
@@ -112,8 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					showMsg('異常が発生しました');
 					return;
 				}
-
-				//改
 				if (!winnersMap[prizeName]) {
 					winnersMap[prizeName] = [];
 				}
@@ -140,9 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
 const numberRow = document.getElementById('numberRow');
-
 
 function pad3(n) {
 	n = parseInt(n, 10);
@@ -172,9 +130,6 @@ function startLotteryAnimation(done) {
 	const winnerList = document.getElementById('winnerList');
 	// winnerList.innerHTML = ''; // 先清空
 
-
-
-
 	let slots = [];
 	for (let i = 0; i < lotteryNumbers.length; i++) {
 		slots.push(document.getElementById('slot' + i));
@@ -195,21 +150,8 @@ function startLotteryAnimation(done) {
 			return;
 		}
 		rollSlot(slots[i], lotteryNumbers[i], 2200 - i * 180, function () {
-
-
 			showOneWinnerNumber(i);
-
-			// function showOneWinnerNumber(n) {
-			// n表示当前第几个中奖号码
-			// const winnerList = document.getElementById('winnerList');
-			// 只渲染前n+1个中奖号码
-			// 	winnerList.innerHTML = lotteryNumbers.slice(0, n + 1).map(i =>
-			// 		`<span class="winner-ball">${pad3(i)}</span>`
-			// 	).join('');
-			// 	winnerList.style.display = 'flex';
-			// }
-
-			function showOneWinnerNumber(n) {
+		function showOneWinnerNumber(n) {
 				const prizeName = prizes[curIdx].prizeName;
 				const allWinners = winnersMap[prizeName] || [];
 				const winnerList = document.getElementById('winnerList');
@@ -283,9 +225,6 @@ function rollSlot(slot, finalNum, totalTime, cb) {
 	tick();
 }
 
-
-
-
 // ========== 右侧奖品轮播 ==========
 let prizes = [];
 let curIdx = 0;
@@ -335,16 +274,6 @@ document.getElementById('arrowRight').onclick = function () {
 	lastPrizeQuantity.innerHTML = '';
 };
 
-
-// function showWinnerNumbers() {
-// 	const winnerList = document.getElementById('winnerList');
-// 	winnerList.innerHTML = lotteryNumbers.map(n =>
-// 		`<span class="winner-ball">${pad3(n)}</span>`
-// 	).join('');
-// 	winnerList.style.display = 'flex';
-// }
-
-// gai
 function showWinnerNumbers() {
 	const prizeName = prizes[curIdx].prizeName;
 	const allWinners = winnersMap[prizeName] || [];
@@ -426,24 +355,9 @@ function startWinnerListMarquee() {
 	const scrollStep = 0.5; // 每次滚动的像素
 	const interval = 170; // 滚动间隔，越小越快
 
-// 	function scroll() {
-
-// 		if (winnerList.scrollWidth <= winnerList.clientWidth + 2) return;
-
-// 		// 到达最右侧后，回到最左
-// 		if (winnerList.scrollLeft + winnerList.clientWidth >= winnerList.scrollWidth - 1) {
-// 			winnerList.scrollLeft = 0;
-// 		} else {
-// 			winnerList.scrollLeft += scrollStep;
-// 		}
-// 	}
-
-// 	winnerListScrollTimer = setInterval(scroll, interval);
-// }
-
-			let direction = 1; // 1往右，-1往左
+	let direction = 1; // 1往右，-1往左
 			//新增左右滾動判斷
-			function scroll() {
+	function scroll() {
 				if (winnerList.scrollWidth <= winnerList.clientWidth + 2) return;
 
 				// 邊界判斷，遇右邊界反轉方向
@@ -466,9 +380,6 @@ function stopWinnerListMarquee() {
 	}
 }
 
-
-
-
 // 禁用页面所有按钮
 function disableAllButtons() {
 	const btns = document.querySelectorAll('button');
@@ -488,3 +399,89 @@ document.getElementById('minBtn').onclick = function () {
 document.getElementById('closeBtn').onclick = function () {
     window.electronAPI.close();
 };
+document.addEventListener('DOMContentLoaded', function () {
+    const coverBtn = document.getElementById('coverStartBtn');
+    const coverMask = document.getElementById('cover-mask');
+    if (coverBtn && coverMask) {
+        coverBtn.onclick = function () {
+            coverMask.style.opacity = 0;
+            setTimeout(() => {
+                coverMask.style.display = 'none';
+            }, 600);
+        };
+    }
+});
+function drawStar(ctx, x, y, r, color) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.translate(x, y);
+    ctx.moveTo(0, -r);
+    for (let i = 0; i < 8; i++) {
+        ctx.rotate(Math.PI / 4);
+        ctx.lineTo(0, -r * 0.45);
+        ctx.rotate(Math.PI / 4);
+        ctx.lineTo(0, -r);
+    }
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.globalAlpha = 0.7;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 6;
+    ctx.fill();
+    ctx.restore();
+}
+
+function startLeftPanelEffect() {
+    const canvas = document.getElementById('leftPanelEffect');
+    if (!canvas) return;
+    const panel = document.querySelector('.left-panel');
+    canvas.width = panel.offsetWidth;
+    canvas.height = panel.offsetHeight;
+    const ctx = canvas.getContext('2d');
+    const stars = [];
+    for (let i = 0; i < 14; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: 10 + Math.random() * 18,
+            color: Math.random() > 0.5 ? 'rgba(247,179,166,0.18)' : 'rgba(200,200,200,0.13)',
+            speed: 0.2 + Math.random() * 0.3
+        });
+    }
+    let running = true;
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(star => {
+            drawStar(ctx, star.x, star.y, star.r, star.color);
+        });
+    }
+    function update() {
+        stars.forEach(star => {
+            star.y -= star.speed;
+            if (star.y + star.r < 0) {
+                star.y = canvas.height + star.r;
+                star.x = Math.random() * canvas.width;
+            }
+        });
+    }
+    function animate() {
+        if (!running) return;
+        draw();
+        update();
+        requestAnimationFrame(animate);
+    }
+    animate();
+    // 停止动画方法
+    return () => { running = false; ctx.clearRect(0, 0, canvas.width, canvas.height); };
+}
+
+// 页面加载时启动动画
+let stopLeftPanelEffect = null;
+document.addEventListener('DOMContentLoaded', function () {
+    stopLeftPanelEffect = startLeftPanelEffect();
+});
+
+// 点击抽奖按钮时停止动画
+document.getElementById('btnStart').addEventListener('click', function () {
+    if (stopLeftPanelEffect) stopLeftPanelEffect();
+});

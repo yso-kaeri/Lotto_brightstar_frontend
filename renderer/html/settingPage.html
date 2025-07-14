@@ -14,7 +14,6 @@
 	
 	<div class="container mt-1">
 	<h3>景品設定</h3>
-	<!-- <form method="post" action="/uploadPrize" enctype="multipart/form-data" class="mb-5"> -->
 		<form method="post" id="uploadForm" enctype="multipart/form-data" class="mb-5">
 		<div class="mb-3">
 			<label>名前</label>
@@ -44,15 +43,6 @@
 				<th>操作</th>
 			</tr>
 		</thead>
-		<!-- <tbody th:if="${prizes != null and !prizes.isEmpty()}">
-			<tr th:each="prize : ${prizes}">
-				<td th:text="${prize.name}"></td>
-				<td th:text="${prize.quantity}"></td>
-				<td><img th:src="@{${prize.imagePath}}" width="100" /></td>
-				<td><button type="button" class="btn btn-primary" th:data-name="${prize.name}"
-						th:onclick="deleteCompletely(this.getAttribute('data-name'), this);">削除</button></td>
-			</tr>
-		</tbody> -->
 
 		<tbody id="prizeTableBody">
     <!-- JS 动态插入奖品行 -->
@@ -65,8 +55,6 @@
     <img src="../img/home.jpg" alt="主頁">
   </button>
   </div>
-
-
 
 	<!-- 自定义确认弹窗  有选择按钮的-->
 <div id="Confirm" class="Confirm" >

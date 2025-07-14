@@ -17,37 +17,42 @@
 
  /* 中奖番号表示エリア用CSS */
  .main-board {
-     background:
-        white; /* Subtle white gradient */
-         /* Very subtle black lines */
+     background: white;
      background-blend-mode: overlay; /* Blend the pattern */
      border-radius: 1.5em;
      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 0, 0, 0.3); /* Softer shadow, subtle red outline */
      display: flex;
-     /* min-width: 950px; */
-     /* min-height: 480px; */
      width: 1300px;
      height: 500px;
      overflow: hidden;
-     border: none; /* No direct border, use shadow for outline */
+     border: none;
      position: relative;
  }
 
+
  /* 左側の当選番号エリア用CSS*/
  .left-panel {
-
+     position: relative;
      flex: 1.7;
      padding: 32px 32px 0 32px;
      display: flex;
      flex-direction: column;
      align-items: center;
-     background: #FFFFFF; /* Clean white */
+     background: linear-gradient(120deg, #fff6f4 60%, #f6c2b7 100%);/* Clean white */
      border-top-left-radius: 1.5em;
      border-bottom-left-radius: 1.5em;
      border-right: none; /* 移除此邊框 */
-     /* box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.08); */ /* Subtle inner shadow */
- }
+     overflow: hidden;
 
+ }
+.left-panel-effect {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
  .award-name{
     font-size: 26px;
     color: #000000;
@@ -140,18 +145,13 @@
      text-shadow: 0 1px 2px #fff, 0 2px 6px #ffd480;
  }
 
-
-		/*0714修改*/
-		.winner-wrapper {
-			width: 800px;
-			/* 固定可視範圍，不會撐破排版 */
-			max-width: 100%;
-			/* 手機支援 */
-			overflow: hidden;
-			/* 超出不顯示，留給內部滾動用 */
-			margin-top: 22px;
-			position: relative;
-		}
+.winner-wrapper {
+	width: 800px;
+	max-width: 100%;
+    overflow: hidden;
+	margin-top: 22px;
+	position: relative;
+	}
 
 
  /* 当選番号表示エリア */
@@ -174,13 +174,13 @@
   scrollbar-color: rgba(0,0,0,0.3) transparent;
 
   			/*漸變遮罩 - 左右 30px 漸變透明 */
-			mask-image: linear-gradient(to right,
-					transparent 0px,
-					black 20px,
-					black calc(100% - 20px),
-					transparent 100%);
-			scrollbar-width: none;
-			transition: scrollbar-color 0.3s;
+mask-image: linear-gradient(to right,
+		transparent 0px,
+		black 20px,
+		black calc(100% - 20px),
+		transparent 100%);
+		scrollbar-width: none;
+		transition: scrollbar-color 0.3s;
 }
  /* 滚动条样式优化（WebKit 内核浏览器，如 Chrome、Safari） */
 .winner-list::-webkit-scrollbar {
@@ -221,16 +221,12 @@
      transition: transform 0.18s;
          /* 避免 flex 导致的换行影响，重置默认样式 */
      flex-shrink: 0; 
-
-     
-			/*0714修改漸入*/
-			opacity: 0;
-			animation: fadeInBall 1.2s ease-out forwards;
+	 opacity: 0;
+	 animation: fadeInBall 1.2s ease-out forwards;
  }
 
- 		/*0714修改漸入*/
-		@keyframes fadeInBall {
-			to {
+	@keyframes fadeInBall {
+		to {
 				opacity: 1;
 			}
 		}
@@ -291,7 +287,7 @@
  }
 /* 固定奖品信息区高度，防止按钮跳动 */
 .prize-img-title {
-    min-height: 32px;  /* 根据实际内容高度可调整为40px或更大 */
+    min-height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -427,7 +423,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Common button styling for alignment and sizing */
+
 .winner-button, .setting-button, .participant-button {
     width: 44px; /* Consistent size */
     height: 44px; /* Consistent size */
