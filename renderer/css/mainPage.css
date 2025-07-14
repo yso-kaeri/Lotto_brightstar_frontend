@@ -253,7 +253,13 @@
      min-width: 90px;
      letter-spacing: 0.07em;
  }
-
+/* 固定奖品信息区高度，防止按钮跳动 */
+.prize-img-title {
+    min-height: 32px;  /* 根据实际内容高度可调整为40px或更大 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
  .prize-btn-row {
      display: flex;
      align-items: center;
