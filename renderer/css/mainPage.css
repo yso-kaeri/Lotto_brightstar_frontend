@@ -141,14 +141,26 @@
  }
 
 
-
+		/*0714修改*/
+		.winner-wrapper {
+			width: 800px;
+			/* 固定可視範圍，不會撐破排版 */
+			max-width: 100%;
+			/* 手機支援 */
+			overflow: hidden;
+			/* 超出不顯示，留給內部滾動用 */
+			margin-top: 22px;
+			position: relative;
+		}
 
 
  /* 当選番号表示エリア */
 .winner-list {
   display: flex;
   gap: 18px;
-  justify-content: center; /* 左对齐，滚动时自然从左边开始 */
+
+  justify-content: space-evenly; 
+
   align-items: center;
   margin-top: 22px;
   width: calc(70px*6 + 18px*6);  /* 五个球的总宽度：70*5 + 间隔*4 = 350 + 72 = 422px */
@@ -160,10 +172,23 @@
   /* 可选美化滚动条 */
   scrollbar-width: thin;
   scrollbar-color: rgba(0,0,0,0.3) transparent;
+
+  			/*漸變遮罩 - 左右 30px 漸變透明 */
+			mask-image: linear-gradient(to right,
+					transparent 0px,
+					black 20px,
+					black calc(100% - 20px),
+					transparent 100%);
+			scrollbar-width: none;
+			transition: scrollbar-color 0.3s;
 }
  /* 滚动条样式优化（WebKit 内核浏览器，如 Chrome、Safari） */
 .winner-list::-webkit-scrollbar {
-    height: 8px; /* 滚动条高度 */
+    			height: 8px;
+			/* 滚动条高度 */
+			width: 8px;
+			opacity: 0;
+			transition: opacity 0.3s;
 }
 .winner-list::-webkit-scrollbar-track {
     background: #fff; /* 轨道背景 */
@@ -196,8 +221,19 @@
      transition: transform 0.18s;
          /* 避免 flex 导致的换行影响，重置默认样式 */
      flex-shrink: 0; 
+
+     
+			/*0714修改漸入*/
+			opacity: 0;
+			animation: fadeInBall 1.2s ease-out forwards;
  }
 
+ 		/*0714修改漸入*/
+		@keyframes fadeInBall {
+			to {
+				opacity: 1;
+			}
+		}
  .winner-ball:hover {
      transform: scale(1.12) rotate(-6deg);
      box-shadow: 0 2px 22px #ffd48099;

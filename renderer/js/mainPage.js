@@ -426,20 +426,38 @@ function startWinnerListMarquee() {
 	const scrollStep = 0.5; // 每次滚动的像素
 	const interval = 170; // 滚动间隔，越小越快
 
-	function scroll() {
+// 	function scroll() {
 
-		if (winnerList.scrollWidth <= winnerList.clientWidth + 2) return;
+// 		if (winnerList.scrollWidth <= winnerList.clientWidth + 2) return;
 
-		// 到达最右侧后，回到最左
-		if (winnerList.scrollLeft + winnerList.clientWidth >= winnerList.scrollWidth - 1) {
-			winnerList.scrollLeft = 0;
-		} else {
-			winnerList.scrollLeft += scrollStep;
+// 		// 到达最右侧后，回到最左
+// 		if (winnerList.scrollLeft + winnerList.clientWidth >= winnerList.scrollWidth - 1) {
+// 			winnerList.scrollLeft = 0;
+// 		} else {
+// 			winnerList.scrollLeft += scrollStep;
+// 		}
+// 	}
+
+// 	winnerListScrollTimer = setInterval(scroll, interval);
+// }
+
+			let direction = 1; // 1往右，-1往左
+			//新增左右滾動判斷
+			function scroll() {
+				if (winnerList.scrollWidth <= winnerList.clientWidth + 2) return;
+
+				// 邊界判斷，遇右邊界反轉方向
+				if (winnerList.scrollLeft + winnerList.clientWidth >= winnerList.scrollWidth - 1) {
+					direction = -1;
+				}
+				// 遇左邊界反轉方向
+				else if (winnerList.scrollLeft <= 0) {
+					direction = 1;
+				}
+				winnerList.scrollLeft += direction * scrollStep;
+			}
+			winnerListScrollTimer = setInterval(scroll, interval);
 		}
-	}
-
-	winnerListScrollTimer = setInterval(scroll, interval);
-}
 
 function stopWinnerListMarquee() {
 	if (winnerListScrollTimer) {
