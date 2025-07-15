@@ -25,52 +25,52 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-    // 兼容开发环境和打包后环境
     const isPackaged = app.isPackaged;
     let resourceDir, javaCmd, jarPath;
 
     if (isPackaged) {
-    resourceDir = process.resourcesPath; // 直接指到 Resources
+        const os = require('os');
+        resourceDir = process.resourcesPath;
+        if (process.platform === 'darwin') {
+            // macOS 上的 Java 路徑
+            javaCmd = path.join(resourceDir, 'jdk-17.0.11.jdk', 'Contents', 'Home', 'bin', 'java');
+        } else if (process.platform === 'win32') {
+            // Windows 上的 Java 路徑
+            javaCmd = path.join(resourceDir, 'jre', 'bin', 'java.exe');
+        }
+        jarPath = path.join(resourceDir, 'Lotto_brightstar-0.0.1-SNAPSHOT.jar');
+
+        // 調試輸出
+        console.log('javaCmd:', javaCmd);
+        console.log('jarPath:', jarPath);
+        console.log('java exists:', fs.existsSync(javaCmd));
+        console.log('jar exists:', fs.existsSync(jarPath));
+
+        // 僅打包後才啟動 Java backend
+        backendProcess = spawn(javaCmd, ['-jar', jarPath], { cwd: resourceDir });
+
+        backendProcess.stdout.on('data', (data) => {
+            const output = data.toString();
+            console.log(`[backend] ${output}`);
+            if (output.includes('Started') && !windowCreated) {
+                createWindow();
+            }
+        });
+
+        backendProcess.stderr.on('data', (data) => {
+            console.error(`[backend-err] ${data}`);
+        });
+
+        backendProcess.on('close', (code) => {
+            if (!windowCreated) {
+                dialog.showErrorBox('Backend Error', `The backend process exited prematurely with code ${code}. The application will now close.`);
+                app.quit();
+            }
+        });
     } else {
-    resourceDir = path.join(__dirname, 'Resources');
+        // 開發模式下，只啟動前端
+        createWindow();
     }
-
-    // 拼接内置 JRE 和 Jar 路径
-    // 根據自己的電腦環境調整 JAR 路徑
-    // macOS 上的 JDK 路徑
-    javaCmd = path.join(resourceDir, 'jdk-17.0.11.jdk', 'Contents', 'Home', 'bin', 'java');
-    // Windows 上的 JRE 路徑
-    // javaCmd = path.join(resourceDir, 'jre', 'bin', 'java.exe');
-    jarPath = path.join(resourceDir, 'Lotto_brightstar-0.0.1-SNAPSHOT.jar');
-
-    // 调试输出
-    console.log('javaCmd:', javaCmd);
-    console.log('jarPath:', jarPath);
-    console.log('java exists:', fs.existsSync(javaCmd));
-    console.log('jar exists:', fs.existsSync(jarPath));
-
-    // 启动 Java 后台服务
-    backendProcess = spawn(javaCmd, ['-jar', jarPath], { cwd: resourceDir });
-
-    backendProcess.stdout.on('data', (data) => {
-        const output = data.toString();
-        console.log(`[backend] ${output}`);
-        // Check for a specific message from the backend that indicates it's ready
-        if (output.includes('Started') && !windowCreated) {
-            createWindow();
-        }
-    });
-
-    backendProcess.stderr.on('data', (data) => {
-        console.error(`[backend-err] ${data}`);
-    });
-
-    backendProcess.on('close', (code) => {
-        if (!windowCreated) {
-            dialog.showErrorBox('Backend Error', `The backend process exited prematurely with code ${code}. The application will now close.`);
-            app.quit();
-        }
-    });
 });
 
 app.on('before-quit', () => {
