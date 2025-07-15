@@ -5,7 +5,9 @@
 	<meta charset="UTF-8" />
 	<title>抽選システム</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
 	<link rel="stylesheet" href="../css/mainPage.css">
+	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body>
@@ -36,13 +38,29 @@
 			<!-- 左开奖数字滚轮区 -->
              <canvas id="leftPanelEffect" class="left-panel-effect"></canvas>
 			<div class="left-panel">
+				<lottie-player 
+					id="confettiAnimation"
+					src="../lottie/Confetti.json"
+					background="transparent"
+					speed="1"
+					style="width: 800px; height: 1000px; margin: -120px auto 0; display: none; position: absolute; top: 0; left: 0; z-index: 10;"
+				></lottie-player>
 
 				<div class="period-info" id="periodInfo">忘年会抽選</div>
 				<div class="award-name" id="awardName"></div>
 
+				<lottie-player 
+					id="welcomeAnimation"
+					src="../lottie/Welcome.json"
+					background="transparent"
+					speed="1"
+					style="width: 800px; height: 1000px; margin: -120px auto 0; display: block; position: absolute; top: 0; left: 0; z-index: 5;"
+					loop
+					autoplay
+				></lottie-player>
+
 				<div class="number-row" id="numberRow"></div>
 				<div class="winner-list" id="winnerList"></div>
-
 
 			</div>
 			<!-- 右奖品图片轮播+开奖按钮区 -->

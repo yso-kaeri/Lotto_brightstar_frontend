@@ -52,6 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// “开始开奖”按钮
 	document.getElementById('btnStart').addEventListener('click', () => {
+		// Hide welcome animation
+		const welcomeAnimation = document.getElementById('welcomeAnimation');
+		if (welcomeAnimation) {
+			welcomeAnimation.style.display = 'none';
+		}
+
 		if (participantCount == null) {
 			showMsg('参加する総人数を設定してください');
 			return;
@@ -145,6 +151,19 @@ function startLotteryAnimation(done) {
 		if (i >= slots.length) {
 			showWinnerNumbers();
 			document.getElementById('btnStart').disabled = false;
+
+			// Play confetti animation
+			const confettiAnimation = document.getElementById('confettiAnimation');
+			confettiAnimation.stop();
+			confettiAnimation.style.display = 'block';
+			confettiAnimation.play();
+
+			confettiAnimation.addEventListener('complete', () => {
+				confettiAnimation.style.display = 'none';
+			}, { once: true });
+
+
+
 			if (done) done(); // 执行回调
 
 			return;
