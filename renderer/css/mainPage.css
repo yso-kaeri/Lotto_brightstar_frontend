@@ -156,6 +156,8 @@
 
  /* 当選番号表示エリア */
 .winner-list {
+  background-color: transparent; /* Make winner list background transparent */
+  z-index: 2; /* Ensure winner balls are on top of the new background */
   display: flex;
   gap: 18px;
 

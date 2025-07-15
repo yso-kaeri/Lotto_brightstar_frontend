@@ -1,7 +1,13 @@
 
 // 全局变量存人数
 let participantCount = null;
-const winnersMap = {};
+let winnersMap = {};
+
+// Try to load winners from sessionStorage on startup
+const savedWinners = sessionStorage.getItem('winnersMap');
+if (savedWinners) {
+    winnersMap = JSON.parse(savedWinners);
+}
 
 // 页面加载完后绑定事件
 document.addEventListener('DOMContentLoaded', function () {
@@ -86,6 +92,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 				// 把這次抽出的號碼加進去（累加）
 				winnersMap[prizeName] = winnersMap[prizeName].concat(result.winners);
+				// Save updated winners map to sessionStorage
+				sessionStorage.setItem('winnersMap', JSON.stringify(winnersMap));
+
 				disableAllButtons();
 				// 更新抽奖结果...
 				lotteryNumbers = result.winners;
@@ -190,24 +199,6 @@ function startLotteryAnimation(done) {
 					winnerList.scrollLeft = 0;
 				}
 			}
-			// 在切换奖品时也要停止滚动
-			document.getElementById('arrowLeft').onclick = function () {
-				curIdx = (curIdx - 1 + prizes.length) % prizes.length;
-				showPrize(curIdx);
-				winnerList.innerHTML = '';
-				numberRow.innerHTML = '';
-				lastPrizeQuantity.innerHTML = '';
-				stopWinnerListMarquee();
-			};
-			document.getElementById('arrowRight').onclick = function () {
-				curIdx = (curIdx + 1) % prizes.length;
-				showPrize(curIdx);
-				winnerList.innerHTML = '';
-				numberRow.innerHTML = '';
-				lastPrizeQuantity.innerHTML = '';
-				stopWinnerListMarquee();
-			};
-
 			// 停下后随机等待1~2秒
 			const delay = 1000 + Math.random() * 1000;
 			setTimeout(() => {
@@ -277,21 +268,44 @@ function showPrize(idx) {
 
 document.getElementById('arrowLeft').onclick = function () {
 	curIdx = (curIdx - 1 + prizes.length) % prizes.length;
-	showPrize(curIdx);
-
-	winnerList.innerHTML = '';
-	numberRow.innerHTML = '';
-	lastPrizeQuantity.innerHTML = '';
+	handlePrizeSwitch();
 };
+
 document.getElementById('arrowRight').onclick = function () {
 	curIdx = (curIdx + 1) % prizes.length;
-	showPrize(curIdx);
-
-
-	winnerList.innerHTML = '';
-	numberRow.innerHTML = '';
-	lastPrizeQuantity.innerHTML = '';
+	handlePrizeSwitch();
 };
+
+function handlePrizeSwitch() {
+    showPrize(curIdx);
+    const prize = prizes[curIdx];
+    const prizeName = prize.prizeName;
+    const totalQuantity = prize.quantity;
+    const existingWinners = winnersMap[prizeName] || [];
+    const welcomeAnimation = document.getElementById('welcomeAnimation');
+    const celebrationBackground = document.getElementById('celebrationBackground');
+
+    // Clear the temporary rolling number display
+    numberRow.innerHTML = '';
+
+    // Update the remaining quantity display
+    const remaining = totalQuantity - existingWinners.length;
+    document.getElementById('lastPrizeQuantity').textContent = '残り：' + remaining + ' 名';
+
+    if (remaining <= 0) {
+        // Prize is FULL. Show the final winner list and its background, hide the welcome animation.
+        if (welcomeAnimation) welcomeAnimation.style.display = 'none';
+        if (celebrationBackground) celebrationBackground.style.display = 'block';
+        showWinnerNumbers(); // This function populates the winnerList
+    } else {
+        // Prize is NOT full. Show the welcome animation, hide the winner list and its background.
+        if (welcomeAnimation) welcomeAnimation.style.display = 'block';
+        if (celebrationBackground) celebrationBackground.style.display = 'none';
+        winnerList.innerHTML = ''; // Explicitly hide the list for the next draw
+    }
+    
+    stopWinnerListMarquee();
+}
 
 function showWinnerNumbers() {
 	const prizeName = prizes[curIdx].prizeName;
