@@ -37,7 +37,10 @@ app.whenReady().then(() => {
 
     // 拼接内置 JRE 和 Jar 路径
     // 根據自己的電腦環境調整 JAR 路徑
+    // macOS 上的 JDK 路徑
     javaCmd = path.join(resourceDir, 'jdk-17.0.11.jdk', 'Contents', 'Home', 'bin', 'java');
+    // Windows 上的 JRE 路徑
+    // javaCmd = path.join(resourceDir, 'jre', 'bin', 'java.exe');
     jarPath = path.join(resourceDir, 'Lotto_brightstar-0.0.1-SNAPSHOT.jar');
 
     // 调试输出
