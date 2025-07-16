@@ -3,6 +3,9 @@
 let participantCount = null;
 let winnersMap = {};
 
+//全局变量保存总抽奖人数
+let allpeople = 0;
+
 // Try to load winners from sessionStorage on startup
 const savedWinners = sessionStorage.getItem('winnersMap');
 if (savedWinners) {
@@ -23,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (savedCount) {
 		participantCount = parseInt(savedCount, 10);
 		console.log('已恢复人数为：', participantCount);
+		allpeople = participantCount
 	}
 
 	// 打开 modal
@@ -219,7 +223,9 @@ function rollSlot(slot, finalNum, totalTime, cb) {
 		let t = elapsed / totalTime;
 		if (t > 1) t = 1;
 		let delay = 50 + (120 - 50) * Math.pow(t, 2.3);
-		let num = Math.floor(Math.random() * 1000);
+		// let num = Math.floor(Math.random() * 1000);
+		let num = Math.floor(Math.random() * allpeople) + 1; 
+
 		slot.textContent = pad3(num);
 		if (elapsed < totalTime) {
 			setTimeout(() => {
