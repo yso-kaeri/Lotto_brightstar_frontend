@@ -57,7 +57,7 @@ document.getElementById('deleteAllBtn').addEventListener('click', function () {
 					return response.text();
 				})
 				.then(msg => {
-					
+					sessionStorage.removeItem('winnersMap');
 					window.location.reload();
 					// showMsg(msg);
 				})
