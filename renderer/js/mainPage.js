@@ -10,7 +10,7 @@ let allpeople = 0;
 // Try to load winners from sessionStorage on startup
 const savedWinners = sessionStorage.getItem('winnersMap');
 if (savedWinners) {
-    winnersMap = JSON.parse(savedWinners);
+	winnersMap = JSON.parse(savedWinners);
 }
 
 // 页面加载完后绑定事件
@@ -107,63 +107,67 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.getElementById('participantModal').style.display = 'none';
 	});
 
-	// “开始开奖”按钮
-	document.getElementById('btnStart').addEventListener('click', () => {
-		// Hide welcome animation
-		const welcomeAnimation = document.getElementById('welcomeAnimation');
-		if (welcomeAnimation) {
-			welcomeAnimation.style.display = 'none';
-		}
+// “开始开奖”按钮
+document.getElementById('btnStart').addEventListener('click', () => {
+	// 每次抽奖前都从 localStorage 读取，保证只需设置一次即可
+	const savedCount = localStorage.getItem('participantCount');
+	const savedExclude = localStorage.getItem('excludeInput');
+	participantCount = savedCount ? parseInt(savedCount, 10) : null;
+	excludeInput = savedExclude ? savedExclude : '';
+	allpeople = participantCount;
 
-		if (participantCount == null) {
-			showMsg('参加する総人数を設定してください');
-			return;
-		}
-		const prize = prizes[curIdx];
-		const prizeName = prize.prizeName;
-		fetch('http://localhost:8080/api/draw', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				prizeName: prize.prizeName,
-				participantCount: participantCount.toString(),
-				excludeInput: excludeInput
+	// Hide welcome animation
+	const welcomeAnimation = document.getElementById('welcomeAnimation');
+	if (welcomeAnimation) {
+		welcomeAnimation.style.display = 'none';
+	}
+
+	if (participantCount == null) {
+		showMsg('参加する総人数を设置してください');
+		return;
+	}
+	const prize = prizes[curIdx];
+	const prizeName = prize.prizeName;
+	fetch('http://localhost:8080/api/draw', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			prizeName: prize.prizeName,
+			participantCount: participantCount.toString(),
+			excludeInput: excludeInput
+		})
+	})
+		.then(res => res.json())
+		.then(result => {
+			if (!Array.isArray(result.winners)) {
+				console.error('バックエンド返却異常', result);
+				showMsg('異常が発生しました');
+				return;
+			}
+			if (!winnersMap[prizeName]) {
+				winnersMap[prizeName] = [];
+			}
+
+			// 把這次抽出的號碼加進去（累加）
+			winnersMap[prizeName] = winnersMap[prizeName].concat(result.winners);
+			// Save updated winners map to sessionStorage
+			sessionStorage.setItem('winnersMap', JSON.stringify(winnersMap));
+
+			disableAllButtons();
+			// 更新抽奖结果...
+			lotteryNumbers = result.winners;
+			document.getElementById('lastPrizeQuantity')
+				.textContent = '残り：' + result.lastPrizeQuantity + ' 名';
+			renderNumbers();
+			startLotteryAnimation(() => {
+				enableAllButtons();
 			})
 		})
-
-			.then(res => res.json())
-			.then(result => {
-				if (!Array.isArray(result.winners)) {
-					console.error('バックエンド返却異常', result);
-					showMsg('異常が発生しました');
-					return;
-				}
-				if (!winnersMap[prizeName]) {
-					winnersMap[prizeName] = [];
-				}
-
-				// 把這次抽出的號碼加進去（累加）
-				winnersMap[prizeName] = winnersMap[prizeName].concat(result.winners);
-				// Save updated winners map to sessionStorage
-				sessionStorage.setItem('winnersMap', JSON.stringify(winnersMap));
-
-				disableAllButtons();
-				// 更新抽奖结果...
-				lotteryNumbers = result.winners;
-				document.getElementById('lastPrizeQuantity')
-					.textContent = '残り：' + result.lastPrizeQuantity + ' 名';
-				renderNumbers();
-				startLotteryAnimation(() => {
-					enableAllButtons();
-
-				})
-			})
-			.catch(err => {
-				console.error(err);
-				showMsg('抽選の請求が異常になりました');
-			});
-
-	});
+		.catch(err => {
+			console.error(err);
+			showMsg('抽選の請求が異常になりました');
+		});
+});
 });
 
 
@@ -331,34 +335,34 @@ document.getElementById('arrowRight').onclick = function () {
 };
 
 function handlePrizeSwitch() {
-    showPrize(curIdx);
-    const prize = prizes[curIdx];
-    const prizeName = prize.prizeName;
-    const totalQuantity = prize.quantity;
-    const existingWinners = winnersMap[prizeName] || [];
-    const welcomeAnimation = document.getElementById('welcomeAnimation');
-    const celebrationBackground = document.getElementById('celebrationBackground');
+	showPrize(curIdx);
+	const prize = prizes[curIdx];
+	const prizeName = prize.prizeName;
+	const totalQuantity = prize.quantity;
+	const existingWinners = winnersMap[prizeName] || [];
+	const welcomeAnimation = document.getElementById('welcomeAnimation');
+	const celebrationBackground = document.getElementById('celebrationBackground');
 
-    // Clear the temporary rolling number display
-    numberRow.innerHTML = '';
+	// Clear the temporary rolling number display
+	numberRow.innerHTML = '';
 
-    // Update the remaining quantity display
-    const remaining = totalQuantity - existingWinners.length;
-    document.getElementById('lastPrizeQuantity').textContent = '残り：' + remaining + ' 名';
+	// Update the remaining quantity display
+	const remaining = totalQuantity - existingWinners.length;
+	document.getElementById('lastPrizeQuantity').textContent = '残り：' + remaining + ' 名';
 
-    if (remaining <= 0) {
-        // Prize is FULL. Show the final winner list and its background, hide the welcome animation.
-        if (welcomeAnimation) welcomeAnimation.style.display = 'none';
-        if (celebrationBackground) celebrationBackground.style.display = 'block';
-        showWinnerNumbers(); // This function populates the winnerList
-    } else {
-        // Prize is NOT full. Show the welcome animation, hide the winner list and its background.
-        if (welcomeAnimation) welcomeAnimation.style.display = 'block';
-        if (celebrationBackground) celebrationBackground.style.display = 'none';
-        winnerList.innerHTML = ''; // Explicitly hide the list for the next draw
-    }
-    
-    stopWinnerListMarquee();
+	if (remaining <= 0) {
+		// Prize is FULL. Show the final winner list and its background, hide the welcome animation.
+		if (welcomeAnimation) welcomeAnimation.style.display = 'none';
+		if (celebrationBackground) celebrationBackground.style.display = 'block';
+		showWinnerNumbers(); // This function populates the winnerList
+	} else {
+		// Prize is NOT full. Show the welcome animation, hide the winner list and its background.
+		if (welcomeAnimation) welcomeAnimation.style.display = 'block';
+		if (celebrationBackground) celebrationBackground.style.display = 'none';
+		winnerList.innerHTML = ''; // Explicitly hide the list for the next draw
+	}
+	
+	stopWinnerListMarquee();
 }
 
 function showWinnerNumbers() {
@@ -484,91 +488,91 @@ function enableAllButtons() {
 //     window.electronAPI.minimize();
 // };
 document.getElementById('closeBtn').onclick = function () {
-    window.electronAPI.close();
+	window.electronAPI.close();
 };
 document.addEventListener('DOMContentLoaded', function () {
-    const coverBtn = document.getElementById('coverStartBtn');
-    const coverMask = document.getElementById('cover-mask');
-    if (coverBtn && coverMask) {
-        coverBtn.onclick = function () {
-            coverMask.style.opacity = 0;
-            setTimeout(() => {
-                coverMask.style.display = 'none';
-            }, 600);
-        };
-    }
+	const coverBtn = document.getElementById('coverStartBtn');
+	const coverMask = document.getElementById('cover-mask');
+	if (coverBtn && coverMask) {
+		coverBtn.onclick = function () {
+			coverMask.style.opacity = 0;
+			setTimeout(() => {
+				coverMask.style.display = 'none';
+			}, 600);
+		};
+	}
 });
 function drawStar(ctx, x, y, r, color) {
-    ctx.save();
-    ctx.beginPath();
-    ctx.translate(x, y);
-    ctx.moveTo(0, -r);
-    for (let i = 0; i < 8; i++) {
-        ctx.rotate(Math.PI / 4);
-        ctx.lineTo(0, -r * 0.45);
-        ctx.rotate(Math.PI / 4);
-        ctx.lineTo(0, -r);
-    }
-    ctx.closePath();
-    ctx.fillStyle = color;
-    ctx.globalAlpha = 0.7;
-    ctx.shadowColor = color;
-    ctx.shadowBlur = 6;
-    ctx.fill();
-    ctx.restore();
+	ctx.save();
+	ctx.beginPath();
+	ctx.translate(x, y);
+	ctx.moveTo(0, -r);
+	for (let i = 0; i < 8; i++) {
+		ctx.rotate(Math.PI / 4);
+		ctx.lineTo(0, -r * 0.45);
+		ctx.rotate(Math.PI / 4);
+		ctx.lineTo(0, -r);
+	}
+	ctx.closePath();
+	ctx.fillStyle = color;
+	ctx.globalAlpha = 0.7;
+	ctx.shadowColor = color;
+	ctx.shadowBlur = 6;
+	ctx.fill();
+	ctx.restore();
 }
 
 function startLeftPanelEffect() {
-    const canvas = document.getElementById('leftPanelEffect');
-    if (!canvas) return;
-    const panel = document.querySelector('.left-panel');
-    canvas.width = panel.offsetWidth;
-    canvas.height = panel.offsetHeight;
-    const ctx = canvas.getContext('2d');
-    const stars = [];
-    for (let i = 0; i < 14; i++) {
-        stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            r: 10 + Math.random() * 18,
-            color: Math.random() > 0.5 ? 'rgba(247,179,166,0.18)' : 'rgba(200,200,200,0.13)',
-            speed: 0.2 + Math.random() * 0.3
-        });
-    }
-    let running = true;
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(star => {
-            drawStar(ctx, star.x, star.y, star.r, star.color);
-        });
-    }
-    function update() {
-        stars.forEach(star => {
-            star.y -= star.speed;
-            if (star.y + star.r < 0) {
-                star.y = canvas.height + star.r;
-                star.x = Math.random() * canvas.width;
-            }
-        });
-    }
-    function animate() {
-        if (!running) return;
-        draw();
-        update();
-        requestAnimationFrame(animate);
-    }
-    animate();
-    // 停止动画方法
-    return () => { running = false; ctx.clearRect(0, 0, canvas.width, canvas.height); };
+	const canvas = document.getElementById('leftPanelEffect');
+	if (!canvas) return;
+	const panel = document.querySelector('.left-panel');
+	canvas.width = panel.offsetWidth;
+	canvas.height = panel.offsetHeight;
+	const ctx = canvas.getContext('2d');
+	const stars = [];
+	for (let i = 0; i < 14; i++) {
+		stars.push({
+			x: Math.random() * canvas.width,
+			y: Math.random() * canvas.height,
+			r: 10 + Math.random() * 18,
+			color: Math.random() > 0.5 ? 'rgba(247,179,166,0.18)' : 'rgba(200,200,200,0.13)',
+			speed: 0.2 + Math.random() * 0.3
+		});
+	}
+	let running = true;
+	function draw() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		stars.forEach(star => {
+			drawStar(ctx, star.x, star.y, star.r, star.color);
+		});
+	}
+	function update() {
+		stars.forEach(star => {
+			star.y -= star.speed;
+			if (star.y + star.r < 0) {
+				star.y = canvas.height + star.r;
+				star.x = Math.random() * canvas.width;
+			}
+		});
+	}
+	function animate() {
+		if (!running) return;
+		draw();
+		update();
+		requestAnimationFrame(animate);
+	}
+	animate();
+	// 停止动画方法
+	return () => { running = false; ctx.clearRect(0, 0, canvas.width, canvas.height); };
 }
 
 // 页面加载时启动动画
 let stopLeftPanelEffect = null;
 document.addEventListener('DOMContentLoaded', function () {
-    stopLeftPanelEffect = startLeftPanelEffect();
+	stopLeftPanelEffect = startLeftPanelEffect();
 });
 
 // 点击抽奖按钮时停止动画
 document.getElementById('btnStart').addEventListener('click', function () {
-    if (stopLeftPanelEffect) stopLeftPanelEffect();
+	if (stopLeftPanelEffect) stopLeftPanelEffect();
 });

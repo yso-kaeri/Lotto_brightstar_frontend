@@ -36,7 +36,7 @@
 		<div class="main-board">
 
 			<!-- 左开奖数字滚轮区 -->
-             <canvas id="leftPanelEffect" class="left-panel-effect"></canvas>
+			 <canvas id="leftPanelEffect" class="left-panel-effect"></canvas>
 			<div class="left-panel">
 				<lottie-player 
 					id="celebrationBackground"
@@ -119,7 +119,7 @@
 
 				<!-- 設定画面推移のボタン -->
 				<button class="setting-button" id="setting-button" title="設定">⚙</button>
-                <button class="participant-button" id="setParticipantButton" title="人数設定">
+				<button class="participant-button" id="setParticipantButton" title="人数設定">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgba(255, 255, 255, 0.5)" viewBox="0 0 24 24">
 						<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
 					</svg>
@@ -130,21 +130,20 @@
 		<script src="../js/jquery-3.4.1.min.js"></script>
 		<script src="../js/mainPage.js"></script>
 			<div id="participantModal" class="modal">
-            <div class="modal-content">
-                <span id="modalClose" class="modal-close">&times;</span>
-                <div style="margin-bottom: 10px;">
-                <label for="totalInput">總參加人数：</label>
-                <input type="number" id="totalInput" placeholder="總人數を入力ください" min="1" />
-                </div>
-                <!-- 716 -->
-         <div style="margin-bottom: 10px;">
-            <label for="excludeInput">不参加番号（用分号分隔）：</label>
-            <input type="text" id="excludeInput" placeholder="例：12;25;33" pattern="^(\d+;)*\d*$" />
-            <span id="excludeError" style="color:red;display:none;font-size:13px;">只能输入数字和分号</span>
-         </div>
-                <button id="participantConfirmBtn">決定</button>
-            </div>
-            </div>
+			<div class="modal-content">
+				<span id="modalClose" class="modal-close">&times;</span>
+				<div style="margin-bottom: 10px;">
+				  <label for="totalInput">總參加人数：</label>
+				  <input type="number" id="totalInput" placeholder="總人數を入力ください" min="1" />
+				</div>
+				<div class="exclude-row">
+				  <label for="excludeInput">セミコロン区切り（;で区切る）</label>
+				  <textarea id="excludeInput" placeholder="例：12;25;33" pattern="^(\d+;)*\d*$" rows="2"></textarea>
+				  <span id="excludeError">数字とセミコロンのみ入力可能</span>
+				</div>
+				<button id="participantConfirmBtn">決定</button>
+			</div>
+			</div>
 </body>
 
 </html>

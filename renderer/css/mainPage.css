@@ -1,4 +1,195 @@
- @charset "UTF-8";
+/* ===== Modal整体美化 ===== */
+
+#participantModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.22);
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  align-items: center;
+}
+#participantModal .modal-content {
+  background: linear-gradient(135deg, #fff5f5 80%, #ffeaea 100%);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(255,0,0,0.10);
+  padding: 10px 8px 7px 8px;
+  min-width: 110px;
+  max-width: 45vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: modalFadeInRed 0.3s;
+  font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+  border: 1px solid #ffb3b3;
+}
+
+@keyframes modalFadeInRed {
+  from { transform: translateY(30px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+
+#participantModal .modal-close {
+  position: absolute;
+  right: 14px; top: 10px;
+  font-size: 24px;
+  color: #e57373;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-weight: bold;
+}
+#participantModal .modal-close:hover { color: #d32f2f; }
+
+#participantModal label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #d32f2f;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+#participantModal input[type="number"] {
+  font-size: 15px;
+  padding: 7px 4px 7px 4px;
+  border: 1px solid #ffb3b3;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.2s;
+  background: #fff7f7;
+  width: 96%;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(255,0,0,0.04);
+}
+#participantModal input[type="number"]:focus {
+  border: 1.5px solid #e53935;
+  background: #fff;
+}
+
+
+#participantModal .exclude-row {
+  background: linear-gradient(90deg, #fff5f5 80%, #ffeaea 100%);
+  border-radius: 6px;
+  padding: 5px 5px 4px 5px;
+  margin-bottom: 6px !important;
+  box-shadow: 0 1px 4px rgba(255,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+#participantModal .exclude-row textarea {
+  font-size: 12px;
+  padding: 4px 0 4px 0;
+  border: 1px solid #ffb3b3;
+  border-radius: 4px;
+  outline: none;
+  background: #fff7f7;
+  width: 100%;
+  min-height: 18px;
+  max-height: 45px;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(255,0,0,0.03);
+  transition: border 0.2s, box-shadow 0.2s;
+  resize: vertical;
+}
+#participantModal .exclude-row textarea:focus {
+  border: 1.5px solid #e53935;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(255,0,0,0.08);
+}
+#participantModal .exclude-row #excludeError {
+  color: #e53935;
+  font-size: 13px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  display: none;
+  align-self: flex-start;
+}
+
+
+#participantModal button#participantConfirmBtn {
+  margin-top: 6px;
+  width: 100%;
+  padding: 5px 0;
+  background: linear-gradient(90deg, #ff5a36 60%, #ffb3b3 100%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(255,0,0,0.08);
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 1px;
+}
+#participantModal button#participantConfirmBtn:hover {
+  background: linear-gradient(90deg, #d32f2f 60%, #ffb3b3 100%);
+  transform: translateY(-1px) scale(1.03);
+}
+
+#participantModal .modal-content > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+#participantModal .modal-content > div:last-child {
+  margin-bottom: 0;
+}
+/* 美化不参加编号输入区域 */
+#participantModal .exclude-row {
+  background: linear-gradient(90deg, #fafdff 80%, #e6f7ff 100%);
+  border-radius: 10px;
+  padding: 14px 14px 10px 14px;
+  margin-bottom: 16px !important;
+  box-shadow: 0 2px 8px rgba(79,163,247,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#participantModal .exclude-row label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3a6fa1;
+  margin-bottom: 7px;
+  letter-spacing: 1px;
+}
+#participantModal .exclude-row textarea {
+  font-size: 16px;
+  padding: 10px 12px;
+  border: 1.5px solid #b6d6f6;
+  border-radius: 7px;
+  outline: none;
+  background: #f7fbff;
+  width: 100%;
+  min-height: 38px;
+  max-height: 120px;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 4px rgba(79,163,247,0.04);
+  transition: border 0.2s, box-shadow 0.2s;
+  resize: vertical;
+}
+#participantModal .exclude-row textarea:focus {
+  border: 1.5px solid #4fa3f7;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(79,163,247,0.10);
+}
+#participantModal .exclude-row #excludeError {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  display: none;
+  align-self: flex-start;
+}
+
 
  /* 背景様式のcss */
  body {
@@ -146,12 +337,12 @@
  }
 
 .winner-wrapper {
-	width: 800px;
-	max-width: 100%;
+    width: 800px;
+    max-width: 100%;
     overflow: hidden;
-	margin-top: 22px;
-	position: relative;
-	}
+    margin-top: 22px;
+    position: relative;
+    }
 
 
  /* 当選番号表示エリア */
@@ -175,22 +366,22 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(0,0,0,0.3) transparent;
 
-  			/*漸變遮罩 - 左右 30px 漸變透明 */
+            /*漸變遮罩 - 左右 30px 漸變透明 */
 mask-image: linear-gradient(to right,
-		transparent 0px,
-		black 20px,
-		black calc(100% - 20px),
-		transparent 100%);
-		scrollbar-width: none;
-		transition: scrollbar-color 0.3s;
+        transparent 0px,
+        black 20px,
+        black calc(100% - 20px),
+        transparent 100%);
+        scrollbar-width: none;
+        transition: scrollbar-color 0.3s;
 }
  /* 滚动条样式优化（WebKit 内核浏览器，如 Chrome、Safari） */
 .winner-list::-webkit-scrollbar {
-    			height: 8px;
-			/* 滚动条高度 */
-			width: 8px;
-			opacity: 0;
-			transition: opacity 0.3s;
+                height: 8px;
+            /* 滚动条高度 */
+            width: 8px;
+            opacity: 0;
+            transition: opacity 0.3s;
 }
 .winner-list::-webkit-scrollbar-track {
     background: #fff; /* 轨道背景 */
@@ -223,15 +414,15 @@ mask-image: linear-gradient(to right,
      transition: transform 0.18s;
          /* 避免 flex 导致的换行影响，重置默认样式 */
      flex-shrink: 0; 
-	 opacity: 0;
-	 animation: fadeInBall 1.2s ease-out forwards;
+     opacity: 0;
+     animation: fadeInBall 1.2s ease-out forwards;
  }
 
-	@keyframes fadeInBall {
-		to {
-				opacity: 1;
-			}
-		}
+    @keyframes fadeInBall {
+        to {
+                opacity: 1;
+            }
+        }
  .winner-ball:hover {
      transform: scale(1.12) rotate(-6deg);
      box-shadow: 0 2px 22px #ffd48099;
