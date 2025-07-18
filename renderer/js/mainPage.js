@@ -2,6 +2,7 @@
 // 全局变量存人数
 let participantCount = null;
 let winnersMap = {};
+let excludeInput = '';
 
 //全局变量保存总抽奖人数
 let allpeople = 0;
@@ -37,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		//让人数设置输入框自动带上上次选择的值
 		inputEl.value = savedCount ? savedCount : '';
 		inputEl.focus();
+		const excludeInputEl = document.getElementById('excludeInput');
+		const savedExclude = localStorage.getItem('excludeInput');
+		excludeInputEl.value = savedExclude ? savedExclude : excludeInput;
 	});
 
 	// 点击 × 关闭
@@ -47,17 +51,60 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (e.target === modal) modal.style.display = 'none';
 	});
 
-	// 确定按钮：保存人数并关闭
+	// // 确定按钮：保存人数并关闭
+	// btnConfirm.addEventListener('click', () => {
+	// 	const v = parseInt(inputEl.value.trim(), 10);
+	// 	if (!isNaN(v) && v > 0) {
+	// 		participantCount = v;
+	// 		//将设置的抽奖人数放入浏览器缓存, 将不需要重复设置抽奖人数
+	// 		localStorage.setItem('participantCount', v);
+	// 		modal.style.display = 'none';
+	// 	} else {
+	// 		showMsg('参加する総人数を設定してください');
+	// 	}
+	// });
+
+	// 确定按钮：保存人数和不参加番号并关闭
 	btnConfirm.addEventListener('click', () => {
 		const v = parseInt(inputEl.value.trim(), 10);
+		const excludeInputEl = document.getElementById('excludeInput');
+		const excludeVal = excludeInputEl.value.trim();
 		if (!isNaN(v) && v > 0) {
 			participantCount = v;
-			//将设置的抽奖人数放入浏览器缓存, 将不需要重复设置抽奖人数
 			localStorage.setItem('participantCount', v);
+
+			// 新增：保存不参加番号
+			excludeInput = excludeVal;
+			localStorage.setItem('excludeInput', excludeInput);
+
 			modal.style.display = 'none';
 		} else {
 			showMsg('参加する総人数を設定してください');
 		}
+	});
+
+		// 校验 excludeInput 只能输入数字和分号
+		document.getElementById('excludeInput').addEventListener('input', function () {
+			const val = this.value;
+			const valid = /^(\d+;)*\d*$/.test(val);
+			document.getElementById('excludeError').style.display = valid ? 'none' : 'inline';
+		});
+
+		// 716点击“決定”按钮时保存输入
+		document.getElementById('participantConfirmBtn').addEventListener('click', function () {
+		const total = document.getElementById('totalInput').value;
+		const exclude = document.getElementById('excludeInput').value;
+		if (!total || isNaN(total) || total < 1) {
+			alert('请输入有效的总人数');
+			return;
+		}
+		if (!/^(\d+;)*\d*$/.test(exclude)) {
+			alert('不参加名单格式错误，只能输入数字和分号');
+			return;
+		}
+		participantCount = total;
+		excludeInput = exclude;
+		document.getElementById('participantModal').style.display = 'none';
 	});
 
 	// “开始开奖”按钮
@@ -79,7 +126,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				prizeName: prize.prizeName,
-				participantCount: participantCount.toString()
+				participantCount: participantCount.toString(),
+				excludeInput: excludeInput
 			})
 		})
 

@@ -130,15 +130,21 @@
 		<script src="../js/jquery-3.4.1.min.js"></script>
 		<script src="../js/mainPage.js"></script>
 			<div id="participantModal" class="modal">
-			<div class="modal-content">
-				<span id="modalClose" class="modal-close">&times;</span>
-				<div style="margin-bottom: 10px;">
-				<label for="totalInput">總參加人数：</label>
-				<input type="number" id="totalInput" placeholder="總人數を入力ください" min="1" />
-				</div>
-				<button id="participantConfirmBtn">決定</button>
-			</div>
-			</div>
+            <div class="modal-content">
+                <span id="modalClose" class="modal-close">&times;</span>
+                <div style="margin-bottom: 10px;">
+                <label for="totalInput">總參加人数：</label>
+                <input type="number" id="totalInput" placeholder="總人數を入力ください" min="1" />
+                </div>
+                <!-- 716 -->
+         <div style="margin-bottom: 10px;">
+            <label for="excludeInput">不参加番号（用分号分隔）：</label>
+            <input type="text" id="excludeInput" placeholder="例：12;25;33" pattern="^(\d+;)*\d*$" />
+            <span id="excludeError" style="color:red;display:none;font-size:13px;">只能输入数字和分号</span>
+         </div>
+                <button id="participantConfirmBtn">決定</button>
+            </div>
+            </div>
 </body>
 
 </html>
